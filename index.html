@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=1200, initial-scale=1">
   <title>Ci Dienstleistungen – Gebäudereinigung & Hausmeisterservice</title>
   <meta name="description" content="Ci Dienstleistungen: Gebäudereinigung & Hausmeisterservice im Raum Kelheim, Regensburg & Landshut. Einsatzgebiet bis 40 km je Standort. Jetzt Angebot anfragen!" />
   <link rel="icon" href="logo_final_ci.png" />
@@ -124,6 +124,153 @@
     .stat{ background:var(--card-bg); color:var(--card-text); border:1px solid var(--card-border); border-radius:20px; padding:1.8rem; min-width:220px; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,.08); }
     .stat-number{ font-size:2.6rem; font-weight:800; color:var(--brand); letter-spacing:.3px; }
     .stat-label{ margin-top:.35rem; color:#334155; font-weight:700; text-transform:uppercase; font-size:.9rem; letter-spacing:.6px; }
+    @media (max-width: 1200px) {
+  .container { width: min(100% - 1.5rem, var(--maxw)); }
+}
+
+/* deine 900px-Regel deckt Grids schon ab – hier ergänzen wir Header/Map/Abstände */
+@media (max-width: 900px) {
+  header { height: 80vh; } /* weniger Höhe, damit mehr Inhalt sichtbar wird */
+  .header-content p { font-size: 1rem; }
+
+  /* Navigation darf umbrechen und bekommt Luft */
+  nav {
+    flex-wrap: wrap;
+    row-gap: .5rem;
+    padding: .8rem 1rem;
+  }
+  nav ul { flex-wrap: wrap; gap: .6rem; }
+  nav a { padding: .5rem .7rem; }
+  
+  /* Karten & Stats etwas kompakter */
+  .card, .abo-card { padding: 1rem; }
+  .stat { min-width: 180px; padding: 1.2rem; }
+  .map iframe { height: 300px; }
+}
+
+/* Smartphone-Layout */
+@media (max-width: 768px) {
+  /* Header-Typo etwas kleiner, Buttons fingerfreundlich */
+  .header-content h1 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+  .header-content p  { font-size: .98rem; }
+
+  .btn { padding: .85rem 1rem; }
+  .btn.ghost { border-color: rgba(255,255,255,.5); }
+
+  /* Navigation untereinander (kein JS nötig) */
+  nav { align-items: flex-start; }
+  .brand-wrap { margin-bottom: .25rem; }
+  nav ul {
+    width: 100%;
+    justify-content: center;
+    gap: .5rem;
+  }
+  nav a {
+    background: rgba(255,255,255,.10);
+    border-radius: 10px;
+  }
+
+  /* Container-Rand enger */
+  .container { width: min(100% - 1rem, var(--maxw)); }
+
+  /* Karten & Stats 1-spaltig schön luftig */
+  .stats { gap: .8rem; }
+  .stat  { min-width: auto; width: 100%; }
+
+  /* Schatten etwas sanfter auf kleinen Screens */
+  .card, .abo-card, .stat { box-shadow: 0 8px 18px rgba(0,0,0,.07); }
+}
+
+/* sehr kleine Geräte */
+@media (max-width: 480px) {
+  header { height: 70vh; }
+  .container { width: min(100% - .8rem, var(--maxw)); }
+
+  .header-content p { margin-bottom: 1rem; }
+  .icon { width: 40px; height: 40px; font-size: 20px; border-radius: 12px; }
+
+  .map iframe { height: 260px; }
+
+  /* Etwas kleinere Typo in Karten */
+  .card p, .abo-card p { font-size: .95rem; }
+} 
+
+/* ===== Fix: Hero-Video & Bilder (am Ende einfügen) ===== */
+
+/* 1) Hero-Video immer vollflächig, keine “komische” Höhe */
+header {
+  /* statt fester Höhe flexibel, aber mind. volle Bildschirmhöhe */
+  min-height: 100svh;  /* moderne Mobile-Units: berücksichtigt Browserleisten */
+}
+@supports not (height: 100svh) {
+  header { min-height: 100vh; }
+}
+
+/* Video sicher hinter Inhalt + sauberes Cover */
+header video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* hinter Overlay & Content bleiben */
+}
+
+/* Overlay über dem Video (falls zu dunkel/hell, Opazität hier justieren) */
+header::after {
+  z-index: 0;
+}
+
+/* Inhalt liegt sicher über Overlay */
+.header-content { z-index: 1; }
+nav { z-index: 2; }
+
+/* 2) Media-Query-Anpassungen: keine “kleiner machen” Höhe mehr */
+@media (max-width: 900px) {
+  /* Entferne frühere header{height:80vh;} – wir überschreiben auf auto */
+  header { height: auto; } /* min-height greift weiter oben */
+}
+
+/* 3) Bilder nie verzerren */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Falls du irgendwo Bild-Container mit fixer Höhe hast: nutze Cover */
+.media-cover,
+.card .media,
+.abo-card .media {
+  position: relative;
+  overflow: hidden;
+  border-radius: inherit;
+}
+.media-cover img,
+.card .media img,
+.abo-card .media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* füllt den Rahmen ohne Verzerrung */
+}
+
+/* 4) Navigation: darf umbrechen, überlappt aber nicht das Video */
+@media (max-width: 900px) {
+  nav {
+    position: absolute;   /* bleibt im Hero “drüber”, aber ohne Layout-Schubser */
+    left: 0; right: 0; top: 0;
+    flex-wrap: wrap;
+    row-gap: .5rem;
+    padding: .8rem 1rem;
+  }
+}
+
+/* 5) Karten/Stats: leichte Abstände, aber keine Bild-Verschiebung */
+@media (max-width: 768px) {
+  .card, .abo-card, .stat { box-shadow: 0 8px 18px rgba(0,0,0,.07); }
+  .card img, .abo-card img { width: 100%; height: auto; object-fit: contain; }
+}
+
   </style>
 </head>
 <body>
