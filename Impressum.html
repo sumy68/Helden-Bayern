@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Impressum – Ci Dienstleistungen</title>
+  <meta name="description" content="Impressum von Ci Dienstleistungen – Gebäudereinigung & Hausmeisterservice im Raum Kelheim, Regensburg & Landshut." />
+  <link rel="icon" href="logo_final_ci.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --page: #EAF9F2;          /* Pastellgrün */
+      --ink: #545f6b;           /* Haupttext */
+      --muted: #64748b;         /* Sekundärtext */
+      --brand: #34d399;         /* Hellgrün Akzent */
+      --brand-2: #a7f3d0;
+      --border: #dfe9e4;
+      --shadow: 0 10px 25px rgba(2, 6, 23, .08);
+      --radius: 20px;
+      --maxw: 1200px;
+      --card-bg: #F3F6F8;       /* helle Boxen */
+      --card-text: #545f6b;
+      --card-sub: #475569;
+      --card-border: #E3EAF0;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0; font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: var(--page); color: var(--ink); line-height:1.65; letter-spacing:.2px;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width:100%; height:auto; display:block; }
+    .container{ width:min(100% - 2rem, var(--maxw)); margin-inline:auto; }
+
+    /* ===== Topbar (Header-Menü, ohne Video) ===== */
+    .topbar{
+      position: sticky; top:0; z-index: 50;
+      background: var(--page);
+      border-bottom:1px solid var(--border);
+    }
+    .topbar nav{
+      display:flex; justify-content:space-between; align-items:center; gap:1rem;
+      padding: .8rem 2rem;
+    }
+    .brand-wrap{ display:flex; align-items:center; gap:.6rem; font-weight:800; color: var(--ink); }
+    .topbar ul{ list-style:none; display:flex; gap:1.1rem; margin:0; padding:0; }
+    .topbar a{
+      font-weight:700; color:#5b6b76; padding:.55rem .8rem; border-radius:10px; transition:.2s;
+    }
+    .topbar a:hover{ background: rgba(0,0,0,.05); color: var(--ink); }
+
+    /* ===== Inhalt ===== */
+    main{ padding: clamp(1.6rem, 4vw, 2.4rem) 0 3rem; }
+    h1{ font-size: clamp(1.8rem, 4vw, 2.4rem); margin: .2rem 0 1rem; font-weight:800; }
+    .card{
+      background: var(--card-bg); color: var(--card-text);
+      border:1px solid var(--card-border); border-radius: var(--radius);
+      padding:1.25rem 1.2rem; box-shadow: var(--shadow);
+    }
+    .card h2{ margin:1rem 0 .4rem; font-size:1.1rem; letter-spacing:.2px; }
+    .muted{ color: var(--muted); }
+
+    /* ===== Footer (wie Startseite) ===== */
+    footer{
+      border-top:1px solid var(--border);
+      padding: 1rem 0 1.4rem;
+      background: transparent;
+    }
+    footer .footer-nav{
+      position: static !important;
+      display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+      padding:.2rem 0 .6rem;
+    }
+    footer .footer-nav .brand-wrap{ color:#5b6b76; }
+    footer .footer-nav ul{ list-style:none; display:flex; gap:.8rem 1rem; margin:0; padding:0; flex-wrap:wrap; }
+    footer .footer-nav a{
+      color:#5b6b76; font-weight:700; padding:.45rem .7rem; border-radius:10px; transition:.2s;
+    }
+    footer .footer-nav a:hover{ color: var(--ink); background: rgba(0,0,0,.05); }
+    .footer-copy{ margin:.2rem 0 0; text-align:center; color:#5b6b76; }
+    @media (max-width:800px){ footer .footer-nav{ flex-direction:column; align-items:flex-start; } }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header-Menü (ohne Video) ===== -->
+  <header class="topbar">
+    <div class="container">
+      <nav aria-label="Hauptnavigation">
+        <div class="brand-wrap">
+          <img src="logo_final_ci.png" alt="Logo" style="height:40px; filter: drop-shadow(0 4px 10px rgba(0,0,0,.25));">
+          <span>Ci Dienstleistungen</span>
+        </div>
+        <ul>
+          <li><a href="index.html#leistungen">Leistungen</a></li>
+          <li><a href="index.html#abos">Abos</a></li>
+          <li><a href="index.html#standorte">Standorte</a></li>
+          <li><a href="index.html#ueber-uns">Über uns</a></li>
+          <li><a href="index.html#kontakt">Kontakt</a></li>
+          <li><a href="Datenschutzerklärung.html">Datenschutzerklärung</a></li>
+          <li><a href="Impressum.html" aria-current="page">Impressum</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Inhalt ===== -->
+  <main>
+    <div class="container">
+      <h1>Impressum</h1>
+
+      <div class="card">
+        <h2>Anbieterkennzeichnung gemäß § 5 TMG</h2>
+        <p>
+          <strong>Ci Dienstleistungen</strong><br>
+          Inhaber: <strong>Cetin Ilcin</strong><br>
+          Büro: Benzstr. 20, 93053 Regensburg<br>
+          Lager: Gewerbering 8, 84085 Langquaid
+        </p>
+
+        <h2>Kontakt</h2>
+        <p>
+          Telefon: <a href="tel:+4915114098172">+49&nbsp;151&nbsp;14098172</a><br>
+          E-Mail: <a href="mailto:info@ci-dienstleistungen.com">info@ci-dienstleistungen.com</a>
+        </p>
+
+        <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+        <p><strong>Cetin Ilcin</strong>, Anschrift wie oben.</p>
+
+        <!-- Optional – falls vorhanden eintragen und Kommentar entfernen
+        <h2>Registereintrag</h2>
+        <p>Eintragung im Handelsregister. Registergericht: […], Registernummer: […]</p>
+
+        <h2>Umsatzsteuer</h2>
+        <p>USt-IdNr.: DE[…]</p>
+
+        <h2>Berufshaftpflicht (optional)</h2>
+        <p>Versicherer: […], Räumlicher Geltungsbereich: […]</p>
+        -->
+
+        <h2>Hinweis auf EU-Streitschlichtung</h2>
+        <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+          <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>.
+          Wir sind weder verpflichtet noch bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+        <h2>Haftung für Inhalte</h2>
+        <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+           Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu
+           überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder
+           Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist
+           jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden entsprechender
+           Rechtsverletzungen entfernen wir diese Inhalte umgehend.</p>
+
+        <h2>Haftung für Links</h2>
+        <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese
+           fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber
+           der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft;
+           rechtswidrige Inhalte waren damals nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne
+           konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen entfernen wir derartige
+           Links umgehend.</p>
+
+        <h2>Urheberrecht</h2>
+        <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die
+           Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der
+           schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht
+           kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die
+           Urheberrechte Dritter beachtet und Inhalte als solche gekennzeichnet.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container">
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <div class="brand-wrap">
+          <img src="logo_final_ci.png" alt="Logo" style="height:40px; filter: drop-shadow(0 4px 10px rgba(0,0,0,.25));">
+          <span>Ci Dienstleistungen</span>
+        </div>
+        <ul>
+          <li><a href="index.html#leistungen">Leistungen</a></li>
+          <li><a href="index.html#abos">Abos</a></li>
+          <li><a href="index.html#standorte">Standorte</a></li>
+          <li><a href="index.html#ueber-uns">Über uns</a></li>
+          <li><a href="index.html#kontakt">Kontakt</a></li>
+          <li><a href="Impressum.html" rel="noopener" aria-current="page">Impressum</a></li>
+          <li><a href="Datenschutzerklärung.html" rel="noopener">Datenschutzerklärung</a></li>
+        </ul>
+      </nav>
+      <p class="footer-copy">© <span id="year"></span> Ci Dienstleistungen</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
