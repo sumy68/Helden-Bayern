@@ -19,6 +19,7 @@
 
       <nav class="nav-links" aria-label="Hauptmenü">
         <a href="#service">Service</a>
+        <a href="#abos">Abo-Modelle</a>
         <a href="#kundenmeinungen">Kundenmeinungen</a>
         <a href="#ueber-uns">Über uns</a>
         <a href="#standort">Standort</a>
@@ -401,6 +402,56 @@
             </div>
           </section>
           
+          <section id="abos" class="abos abos--donuts" aria-label="Abo-Modelle">
+            <div class="container">
+              <header class="abos__header">
+                <h2>Unsere Abo-Modelle</h2>
+                <p class="abos__sub">Preis auf Anfrage – Leistungsumfang als Prozent</p>
+              </header>
+          
+              <div class="donut-grid">
+                <!-- Jede .donut hat data-perc für die Animation -->
+                <figure class="donut" data-perc="30" aria-label="SchnupperAbo Home, 30 Prozent">
+                  <svg viewBox="0 0 120 120" role="img" aria-hidden="true">
+                    <circle class="track" cx="60" cy="60" r="52" />
+                    <circle class="bar"   cx="60" cy="60" r="52" />
+                  </svg>
+                  <figcaption>
+                    <h3>SchnupperAbo Home</h3>
+                    <p>Gartenpflege <em>oder</em> Hausmeisterservice, 1×/Monat</p>
+                    <span class="percent">30%</span>
+                    <small>Preis auf Anfrage</small>
+                  </figcaption>
+                </figure>
+          
+                <figure class="donut" data-perc="50" aria-label="BasisAbo Home, 50 Prozent">
+                  <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="52"/><circle class="bar" cx="60" cy="60" r="52"/></svg>
+                  <figcaption><h3>BasisAbo Home</h3><p>2×/Monat</p><span class="percent">50%</span><small>Preis auf Anfrage</small></figcaption>
+                </figure>
+          
+                <figure class="donut" data-perc="70" aria-label="KombiAbo Home, 70 Prozent">
+                  <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="52"/><circle class="bar" cx="60" cy="60" r="52"/></svg>
+                  <figcaption><h3>KombiAbo Home</h3><p>Garten + Hausmeister, 2×/Monat</p><span class="percent">70%</span><small>Preis auf Anfrage</small></figcaption>
+                </figure>
+          
+                <figure class="donut" data-perc="90" aria-label="PremiumAbo Home, 90 Prozent">
+                  <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="52"/><circle class="bar" cx="60" cy="60" r="52"/></svg>
+                  <figcaption><h3>PremiumAbo Home</h3><p>Wöchentlicher Rundum-Service</p><span class="percent">90%</span><small>Preis auf Anfrage</small></figcaption>
+                </figure>
+          
+                <figure class="donut" data-perc="100" aria-label="PremiumAbo Villa, 100 Prozent">
+                  <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="52"/><circle class="bar" cx="60" cy="60" r="52"/></svg>
+                  <figcaption><h3>PremiumAbo Villa</h3><p>Maximaler Leistungsumfang</p><span class="percent">100%</span><small>Preis auf Anfrage</small></figcaption>
+                </figure>
+              </div>
+          
+              <div class="abo-action">
+                <a class="btn-primary" href="#kontakt">Jetzt anfragen →</a>
+              </div>
+            </div>
+          </section>
+          
+          
 
           <section id="kundenmeinungen" class="testimonials" aria-label="Kundenmeinungen">
             <div class="container">
@@ -585,5 +636,37 @@
       }));
     }
   </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const donuts = document.querySelectorAll('.donut');
+    
+      const setDonut = (el, perc) => {
+        const circle = el.querySelector('.bar');
+        const total = 326; // Dasharray
+        const offset = total * (1 - perc / 100);
+        circle.style.strokeDashoffset = offset;
+        const label = el.querySelector('.percent');
+        if (label) label.textContent = perc + '%';
+      };
+    
+      // Startzustand 0%
+      donuts.forEach(el => setDonut(el, 0));
+    
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting){
+            const el = entry.target;
+            const perc = parseInt(el.dataset.perc, 10) || 0;
+            // leichte Verzögerung für Stagger
+            setTimeout(() => setDonut(el, perc), 120);
+            io.unobserve(el);
+          }
+        });
+      }, { threshold: 0.35 });
+    
+      donuts.forEach(el => io.observe(el));
+    });
+    </script>
+    
 </body>
 </html>            

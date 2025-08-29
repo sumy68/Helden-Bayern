@@ -627,3 +627,57 @@ footer {
     opacity: 0.8;
   }
   
+  /* Donut-Grid */
+.abos.abos--donuts{ padding: clamp(56px,8vw,96px) 16px; }
+.abos__header{ text-align:center; margin-bottom: clamp(28px,4vw,40px); }
+.abos__sub{ opacity:.9; font-size: clamp(15px,2.1vw,17px); }
+
+.donut-grid{
+  display:grid;
+  grid-template-columns: repeat(5, minmax(0,1fr));
+  gap: clamp(16px,2.6vw,28px);
+}
+@media (max-width:1100px){ .donut-grid{ grid-template-columns: repeat(3,1fr);} }
+@media (max-width:700px){  .donut-grid{ grid-template-columns: repeat(2,1fr);} }
+@media (max-width:520px){  .donut-grid{ grid-template-columns: 1fr; } }
+
+.donut{
+  background: var(--green-footer);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  padding: clamp(14px,2.3vw,18px);
+  display:grid; place-items:center;
+  gap: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+.donut svg{ width: 140px; height: 140px; transform: rotate(-90deg); }
+
+.donut .track{
+  fill: none;
+  stroke: rgba(255,255,255,.12);
+  stroke-width: 12;
+}
+.donut .bar{
+  fill: none;
+  stroke: linear-gradient(#34d399, #a7f3d0); /* Fallback ignored, real color via stroke below */
+  stroke: #34d399;
+  filter: drop-shadow(0 0 6px rgba(79, 255, 176, .25));
+  stroke-linecap: round;
+  stroke-width: 12;
+  stroke-dasharray: 326;  /* 2 * π * r  -> r=52 => ~326 */
+  stroke-dashoffset: 326; /* start bei 0% */
+  transition: stroke-dashoffset 1.8s cubic-bezier(.2,.8,.2,1);
+}
+
+.donut figcaption{ text-align:center; display:grid; gap:4px; }
+.donut h3{
+  font-size: clamp(16px,2.4vw,18px);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.donut p{ font-size: clamp(14px,2.1vw,16px); opacity:.92; }
+.donut .percent{ font-weight:800; letter-spacing:.3px; }
+.donut small{ opacity:.8; }
+
+/* Button unten */
+.abo-action{ text-align:center; margin-top: clamp(32px,5vw,56px); }
