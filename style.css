@@ -153,12 +153,13 @@
   
 
   /* ===== INTRO TEXT NACH VIDEO ===== */
-.intro {
-    margin-top: 300px; /* ca. 5cm Abstand bei normalen Screens */
+  .intro {
+    margin-top: 800px; /* +4cm Abstand */
     padding: 40px 16px;
     display: flex;
     justify-content: center;
-  }
+}
+
   
   .intro__inner {
     max-width: 900px;
