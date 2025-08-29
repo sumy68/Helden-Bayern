@@ -2,1110 +2,585 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ci Dienstleistungen – Gebäudereinigung & Hausmeisterservice</title>
-  <meta name="description" content="Ci Dienstleistungen: Gebäudereinigung & Hausmeisterservice im Raum Kelheim, Regensburg & Landshut. Einsatzgebiet bis 40 km je Standort. Jetzt Angebot anfragen!" />
-  <link rel="icon" href="logo_final_ci.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      /* Palette */
-      --page: #EAF9F2;          /* Pastellgrün Hintergrund */
-      --ink: #545f6b;           /* Haupttext */
-      --muted: #64748b;         /* Sekundärtext */
-      --brand: #34d399;         /* Hellgrün Akzent */
-      --brand-2: #a7f3d0;
-      --border: #dfe9e4;        /* zarte Linien */
-      --shadow: 0 10px 25px rgba(2, 6, 23, .08);
-      --radius: 20px;
-      --maxw: 1200px;
-
-      /* Boxen (hellgrau) */
-      --card-bg: #F3F6F8;       /* HELLGRAU für alle Karten */
-      --card-text: #545f6b;
-      --card-sub: #475569;
-      --card-border: #E3EAF0;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body{
-      margin:0; font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--page); color: var(--ink); line-height: 1.65; letter-spacing: .2px;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; height: auto; display: block; }
-    .container{ width: min(100% - 2rem, var(--maxw)); margin-inline: auto; }
-
-    /* Buttons */
-    .btn{
-      display:inline-flex; align-items:center; gap:.6rem;
-      padding:.9rem 1.15rem; border-radius: 999px; font-weight:700;
-      transition:.25s cubic-bezier(.2,.8,.2,1);
-      background: linear-gradient(180deg, var(--brand), #22c58b);
-      color:#063; border:1px solid #1fb37f;
-      box-shadow: 0 12px 24px rgba(52,211,153,.22);
-    }
-    .btn:hover{ transform: translateY(-2px); filter: brightness(1.06); }
-    .btn.ghost{ background: transparent; color:#fff; border:1px solid var(--border); box-shadow:none; }
-
-    /* Header mit Video */
-    header{ position:relative; height:100vh; overflow:hidden; }
-    header video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-1; }
-    header::after{
-      content:""; position:absolute; inset:0;
-      background: radial-gradient(100% 60% at 50% 20%, rgba(0,0,0,.18), rgba(0,0,0,.50));
-      z-index:0;
-    }
-    nav{
-      position:absolute; top:0; left:0; right:0; display:flex;
-      justify-content:space-between; align-items:center;
-      padding:1rem 2rem; z-index:2;
-    }
-    nav ul{ list-style:none; display:flex; gap:1.1rem; margin:0; padding:0; }
-    nav a{ font-weight:700; color:#fff; opacity:.96; padding:.55rem .8rem; border-radius:10px; transition:.2s; }
-    nav a:hover{ background: rgba(255,255,255,.12); }
-    .brand-wrap{ display:flex; align-items:center; gap:.6rem; font-weight:800; color:#fff; }
-
-    .header-content{
-      position:relative; z-index:1; height:100%;
-      display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:1rem;
-      color:#fff;
-    }
-    .header-content h1{ font-size: clamp(2.1rem, 6vw, 3.8rem); margin:0 0 1rem; font-weight:800; letter-spacing:.3px; }
-    .header-content p{ font-size:1.1rem; max-width:780px; margin-bottom:1.5rem; color:#e8eef3; font-weight:500; }
-
-    /* Sections */
-    section{ padding: clamp(2.2rem, 6vw, 4.2rem) 0; }
-    .section-title{ text-align:center; margin-bottom:1.6rem; }
-    .section-title h2{ margin:0; font-size: clamp(1.6rem, 3.2vw, 2.2rem); color:var(--ink); font-weight:800; }
-    .section-title p{ color:var(--muted); margin:.4rem 0 0; }
-
-    /* Grid */
-    .grid{ display:grid; gap:1.2rem; }
-    .grid-2{ grid-template-columns: repeat(2,1fr); }
-    .grid-3{ grid-template-columns: repeat(3,1fr); }
-    @media(max-width:900px){ .grid-2,.grid-3{ grid-template-columns:1fr; } }
-
-    /* Karten (HELLGRAU) */
-    .card, .abo-card{
-      background: var(--card-bg); color: var(--card-text);
-      border:1px solid var(--card-border); border-radius:var(--radius);
-      padding:1.25rem 1.2rem; box-shadow: var(--shadow);
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    }
-    .card:hover, .abo-card:hover{
-      transform: translateY(-3px);
-      box-shadow: 0 18px 38px rgba(2,6,23,.12);
-      border-color: #d5ece2;
-    }
-    .card h3, .abo-card h3{ margin:.2rem 0 .45rem; color:var(--ink); font-weight:800; letter-spacing:.2px; }
-    .card p{ color: var(--card-sub); }
-    .abo-card{ text-align:center; }
-    .abo-card p{ color:#3b4752; }
-
-    /* Icons in Leistungen */
-    .icon{
-      width: 46px; height: 46px; border-radius: 14px;
-      display:grid; place-items:center; font-size:24px;
-      background: linear-gradient(180deg, var(--brand), #22c58b); color:#063;
-      box-shadow: 0 6px 16px rgba(52,211,153,.25); margin-bottom:.7rem;
-    }
-
-    /* Maps */
-    .map{ position:relative; overflow:hidden; border-radius:16px; border:1px solid var(--card-border); box-shadow: var(--shadow); }
-    .map iframe{ width:100%; height:340px; display:block; border:0; filter: saturate(.98) contrast(1.03); }
-    @media (max-width: 900px){ .map iframe{ height: 280px; } }
-
-    /* Stats */
-    .stats{ display:flex; justify-content:center; gap:1.2rem; flex-wrap:wrap; }
-    .stat{ background:var(--card-bg); color:var(--card-text); border:1px solid var(--card-border); border-radius:20px; padding:1.8rem; min-width:220px; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,.08); }
-    .stat-number{ font-size:2.6rem; font-weight:800; color:var(--brand); letter-spacing:.3px; }
-    .stat-label{ margin-top:.35rem; color:#334155; font-weight:700; text-transform:uppercase; font-size:.9rem; letter-spacing:.6px; }
-    @media (max-width: 1200px) {
-  .container { width: min(100% - 1.5rem, var(--maxw)); }
-}
-
-/* deine 900px-Regel deckt Grids schon ab – hier ergänzen wir Header/Map/Abstände */
-@media (max-width: 900px) {
-  header { height: 80vh; } /* weniger Höhe, damit mehr Inhalt sichtbar wird */
-  .header-content p { font-size: 1rem; }
-
-  /* Navigation darf umbrechen und bekommt Luft */
-  nav {
-    flex-wrap: wrap;
-    row-gap: .5rem;
-    padding: .8rem 1rem;
-  }
-  nav ul { flex-wrap: wrap; gap: .6rem; }
-  nav a { padding: .5rem .7rem; }
-  
-  /* Karten & Stats etwas kompakter */
-  .card, .abo-card { padding: 1rem; }
-  .stat { min-width: 180px; padding: 1.2rem; }
-  .map iframe { height: 300px; }
-}
-
-/* Smartphone-Layout */
-@media (max-width: 768px) {
-  /* Header-Typo etwas kleiner, Buttons fingerfreundlich */
-  .header-content h1 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
-  .header-content p  { font-size: .98rem; }
-
-  .btn { padding: .85rem 1rem; }
-  .btn.ghost { border-color: rgba(255,255,255,.5); }
-
-  /* Navigation untereinander (kein JS nötig) */
-  nav { align-items: flex-start; }
-  .brand-wrap { margin-bottom: .25rem; }
-  nav ul {
-    width: 100%;
-    justify-content: center;
-    gap: .5rem;
-  }
-  nav a {
-    background: rgba(255,255,255,.10);
-    border-radius: 10px;
-  }
-
-  /* Container-Rand enger */
-  .container { width: min(100% - 1rem, var(--maxw)); }
-
-  /* Karten & Stats 1-spaltig schön luftig */
-  .stats { gap: .8rem; }
-  .stat  { min-width: auto; width: 100%; }
-
-  /* Schatten etwas sanfter auf kleinen Screens */
-  .card, .abo-card, .stat { box-shadow: 0 8px 18px rgba(0,0,0,.07); }
-}
-
-/* ===========================
-   Responsive Ergänzung (append-only, Desktop bleibt gleich)
-   =========================== */
-
-/* Breite leicht lockern zwischen 1200px und ~1024px */
-@media (max-width: 1200px) {
-  .container { width: min(100% - 1.5rem, var(--maxw)); }
-}
-
-/* Große Tablets / kleine Laptops: 3er-Grid → 2er-Grid */
-@media (max-width: 1024px) {
-  .grid-3 { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* Deine 900px-Regel stapelt Grids bereits.
-   Hier: Navigation & Header minimal anpassen, ohne Layout zu ändern */
-@media (max-width: 900px) {
-  /* Header nicht „gequetscht“, Video bleibt vollflächig */
-  header { min-height: 80vh; height: auto; }
-
-  /* Navigation darf umbrechen und bekommt etwas Luft */
-  nav { flex-wrap: wrap; row-gap: .5rem; padding: .8rem 1rem; }
-  nav ul { flex-wrap: wrap; gap: .6rem; }
-  nav a { padding: .5rem .7rem; }
-
-  /* Karten/Stats etwas kompakter, aber optisch gleich */
-  .card, .abo-card { padding: 1rem; }
-  .stat { min-width: 180px; padding: 1.2rem; }
-
-  /* Karte nicht zu hoch auf kleineren Screens */
-  .map iframe { height: 300px; }
-}
-
-/* Smartphones */
-@media (max-width: 768px) {
-  /* Typo leicht kleiner, ohne Look zu verändern */
-  .header-content h1 { font-size: clamp(1.8rem, 7vw, 2.6rem); }
-  .header-content p  { font-size: .98rem; }
-
-  /* Container-Rand etwas enger, Inhalt bleibt gleich */
-  .container { width: min(100% - 1rem, var(--maxw)); }
-
-  /* Stats 1-spaltig, gleiche Karten-Optik */
-  .stats { gap: .8rem; }
-  .stat  { min-width: auto; width: 100%; }
-
-  /* Shadow sanfter für kleine Screens (gleicher Stil) */
-  .card, .abo-card, .stat { box-shadow: 0 8px 18px rgba(0,0,0,.07); }
-}
-
-/* Sehr kleine Geräte */
-@media (max-width: 480px) {
-  header { min-height: 70vh; }
-  .container { width: min(100% - .8rem, var(--maxw)); }
-  .header-content p { margin-bottom: 1rem; }
-
-  .icon { width: 40px; height: 40px; font-size: 20px; border-radius: 12px; }
-  .map iframe { height: 260px; }
-
-  /* Karten-Typo leicht kleiner, Stil bleibt */
-  .card p, .abo-card p { font-size: .95rem; }
-}
-
-/* Media/Hero-Videos & Bilder stets korrekt skalieren (generisch, nicht layout-ändernd) */
-header { overflow: hidden; }
-header video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
-img { max-width: 100%; height: auto; display: block; }
-.media-cover, .card .media, .abo-card .media { position: relative; overflow: hidden; border-radius: inherit; }
-.media-cover img, .card .media img, .abo-card .media img { width: 100%; height: 100%; object-fit: cover; }
-
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AGA – Hausmeisterservice & Gebäudereinigung</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header mit Vollbildvideo -->
-  <header>
-    <video autoplay muted loop playsinline>
-      <source src="hero.mp4" type="video/mp4">
-      Ihr Browser unterstützt das Video nicht.
-    </video>
+  <!-- EINZIGER sticky & responsiver Header -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#top" aria-label="Start">
+        <div class="logo-box">
+          <!-- Ersetze logo.jpg durch deinen Dateinamen -->
+          <img src="logo.jpg" alt="AGA Logo">
+        </div>
+      </a>
 
-    <nav>
-      <div class="brand-wrap">
-        <img src="logo_final_ci.png" alt="Logo" style="height:40px; filter: drop-shadow(0 4px 10px rgba(0,0,0,.25));">
-        <span>Ci Dienstleistungen</span>
-      </div>
-      <ul>
-        <li><a href="#leistungen">Leistungen</a></li>
-        <li><a href="#abos">Abos</a></li>
-        <li><a href="#standorte">Standorte</a></li>
-        <li><a href="#ueber-uns">Über uns</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-        <li><a href="Datenschutzerklärung.html">Datenschutzerklärung</a></li>
-        <li><a href="Impressum.html">Impressum</a></li>
-      </ul>
-    </nav>
+      <nav class="nav-links" aria-label="Hauptmenü">
+        <a href="#service">Service</a>
+        <a href="#kundenmeinungen">Kundenmeinungen</a>
+        <a href="#ueber-uns">Über uns</a>
+        <a href="#standort">Standort</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
 
-    <div class="header-content">
-      <h1>Gebäudereinigung & Hausmeisterservice</h1>
-      <p>Kelheim, Regensburg & Landshut – zuverlässig bis 40 km Umkreis</p>
-      <div style="display:flex; gap:.6rem; flex-wrap:wrap; justify-content:center;">
-        <a class="btn" href="tel:+4915114098172">📞 Jetzt anrufen</a>
-        <a class="btn ghost" href="https://wa.me/4915114098172" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <div class="nav-cta">
+        <a class="btn" href="#instagram" aria-label="Instagram">
+          <!-- Instagram Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11Zm0 2a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7ZM18.5 6a1 1 0 1 1 0 2a1 1 0 0 1 0-2Z"/>
+          </svg>
+          Instagram
+        </a>
+        <a class="btn" href="tel:#" aria-label="Anrufen">
+          <!-- Telefon Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+            <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.56.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 7a1 1 0 0 1 1-1h3.49a1 1 0 0 1 1 1c0 1.22.2 2.42.57 3.56a1 1 0 0 1-.24 1.02l-2.2 2.21z"/>
+          </svg>
+          Anrufen
+        </a>
       </div>
+
+      <button class="burger" aria-label="Menü öffnen" aria-expanded="false"><span></span></button>
     </div>
   </header>
 
-  <!-- Stats Section -->
-  <section id="zahlen">
-    <div class="container">
-      <div class="section-title">
-        <h2>Unsere Kennzahlen</h2>
+  <!-- HERO mit Hintergrund-Video -->
+<section id="top" class="hero" aria-label="Intro">
+    <div class="hero__bg" aria-hidden="true">
+      <video class="hero__video" autoplay muted loop playsinline>
+        <source src="hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero__shade"></div>
+    </div>
+  
+    <div class="hero__inner">
+      <h1 class="hero__title">
+        IHR PARTNER IM<br>
+        HAUSMEISTERSERVICE<br>
+        UND GEBÄUDEREINIGUNG
+      </h1>
+  
+      <div class="hero__actions">
+        <a class="btn-primary" href="#kontakt">Jetzt anfragen →</a>
       </div>
-      <div class="stats">
-        <div class="stat">
-          <div class="stat-number" data-target="10">0</div>
-          <div class="stat-label">Jahre Erfahrung</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number" data-target="1500">0</div>
-          <div class="stat-label">zufriedene Kunden</div>
-        </div>
-      </div>
+    </div>
+  </section>
+  
+  <!-- INTRO-TEXT (mit Abstand nach dem Video) -->
+  <section class="intro" aria-label="Einführung">
+    <div class="intro__inner">
+      <h2 class="intro__title">
+        SIE HABEN EIN GEBÄUDE, ABER KEINEN „ALLESKÖNNER“ AN DER HAND?
+      </h2>
+      <p class="intro__text">
+        Kein Problem – den haben wir! Ob Reparaturen, Reinigung oder zuverlässige Betreuung:
+        Wir kümmern uns um alles rund um Ihre Immobilie. Mit Erfahrung, Sorgfalt und einem
+        wachen Auge für jedes Detail sorgen wir dafür, dass Ihr Objekt in bestem Glanz
+        erstrahlt – innen wie außen. Lehnen Sie sich zurück – wir machen den Rest.
+      </p>
     </div>
   </section>
 
-  <!-- Leistungen (überarbeitet) -->
-<section id="leistungen">
-    <div class="container">
-      <div class="section-title">
-        <h2>Unsere Leistungen</h2>
-        <p>Sauber. Sorgfältig. Termintreu.</p>
-      </div>
-  
-      <!-- Gruppe: Gebäudereinigung – innen -->
-      <h3 class="group-title">Gebäudereinigung – innen</h3>
-      <div class="grid grid-3">
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🧽</div>
-          <h3>Unterhaltsreinigung</h3>
-          <p>Büro, Praxis, Kita, Handel & privat – planbar nach Intervall.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🧼</div>
-          <h3>Grundreinigung / Start-Clean</h3>
-          <p>Tiefenreinigung vor Start oder turnusmäßig – inkl. Detailarbeiten.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🚿</div>
-          <h3>Sanitärhygiene & Entkalkung</h3>
-          <p>Sanitärgrundreinigung, Kalkentfernung & Hygienekonzepte.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🍽️</div>
-          <h3>Küchen- & Hygienereinigung</h3>
-          <p>Teeküchen & Sozialräume inkl. Oberflächen- und Gerätepflege.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🧹</div>
-          <h3>Bodenpflege</h3>
-          <p>Maschinenreinigung, Beschichtung/Versiegelung, Pflegepläne.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🧺</div>
-          <h3>Teppich- & Polsterreinigung</h3>
-          <p>Fleckenentfernung, Sprühextraktion, Schonverfahren.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🏢</div>
-          <h3>Treppenhausreinigung</h3>
-          <p>WEG, Wohnanlagen & Gewerbe – sicher & rutschhemmend.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🧴</div>
-          <h3>Desinfektionsreinigung</h3>
-          <p>Für Kitas, Praxen & sensible Bereiche nach Vorgabe.</p>
-        </div>
-      </div>
-  
-      <!-- Gruppe: Gebäudereinigung – außen -->
-      <h3 class="group-title">Gebäudereinigung – außen</h3>
-      <div class="grid grid-3">
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🪟</div>
-          <h3>Glas-, Rahmen- & Wintergarten</h3>
-          <p>Innen & außen, inkl. Rahmen, Falze, Lichtbänder.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🏢</div>
-          <h3>Fassadenreinigung</h3>
-          <p>Glas / Metall / Stein – materialschonende Verfahren.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">☀️</div>
-          <h3>PV-/Solaranlagen</h3>
-          <p>Leistungsoptimierung durch schonende Reinigung.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🪟</div>
-          <h3>Jalousien & Rollläden</h3>
-          <p>Lamellenpflege & Mechanik schonend gereinigt.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🧱</div>
-          <h3>Stein-/Fugen & Graffiti</h3>
-          <p>Flächenreinigung, Flechten/Algen & Graffitientfernung.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🏗️</div>
-          <h3>Bau- & Bauendreinigung</h3>
-          <p>Zwischen- & Endreinigung – bezugsfertige Übergabe.</p>
-        </div>
-      </div>
-  
-      <!-- Gruppe: Hausmeisterservice -->
-      <h3 class="group-title">Hausmeisterservice</h3>
-      <div class="grid grid-3">
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🔎</div>
-          <h3>Objektkontrollen</h3>
-          <p>Regelmäßige Rundgänge & Dokumentation – privat & WEG.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🛠️</div>
-          <h3>Kleinreparaturen</h3>
-          <p>Leuchtmittel, Beschläge, Türen/Fenster prüfen & justieren.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🌿</div>
-          <h3>Außenanlagenpflege</h3>
-          <p>Rasen, Hecken, Beetpflege – saisonal oder im Abo.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🧹</div>
-          <h3>Kehrdienst & Wege</h3>
-          <p>Gehwege, Zufahrten & Allgemeinflächen, inkl. Laub.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🗑️</div>
-          <h3>Müll- & Containerdienst</h3>
-          <p>Bereitstellen, Reinigen & Rücktransport – pünktlich.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🚚</div>
-          <h3>Entrümpeln & Transporte</h3>
-          <p>Keller, Dachboden, Sperrmüll & Kleintransporte.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">❄️</div>
-          <h3>Winterdienst-Koordination</h3>
-          <p>Organisation & Kontrolle externer Dienste.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">🔑</div>
-          <h3>Schlüssel & Zutritt</h3>
-          <p>Management nach Absprache, Übergaben & Protokoll.</p>
-        </div>
-  
-        <div class="card service">
-          <div class="icon" aria-hidden="true">📅</div>
-          <h3>Handwerker-Koordination</h3>
-          <p>Terminüberwachung, Abnahmen & Schnittstellen.</p>
-        </div>
-      </div>
-    </div>
-  
-    <!-- Zusätzliche (scoped) Styles nur für #leistungen -->
-    <style>
-      #leistungen .group-title{
-        margin: 1.6rem 0 .8rem;
-        font-size: 1.1rem;
-        font-weight: 800;
-        color: var(--ink);
-        letter-spacing: .3px;
-        display:flex; align-items:center; gap:.6rem;
-      }
-      #leistungen .group-title::after{
-        content:""; flex:1; height:1px; background: linear-gradient(90deg, var(--brand), transparent);
-        opacity:.6;
-      }
-    </style>
-  </section>
-  
+      
+          <section id="leistungen" class="services" aria-label="Unsere Serviceleistungen">
+            <div class="container">
+              <header class="services__header">
+                <h2>Unsere Serviceleistungen</h2>
+              </header>
+          
+              <!-- ================== GEBÄUDEREINIGUNG – INNEN ================== -->
+              <h3 class="group-title">Gebäudereinigung – innen</h3>
+              <div class="grid grid-2">
+          
+                <!-- Unterhaltsreinigung -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/unterhaltsreinigung.jpg" alt="Unterhaltsreinigung in Büro und Praxis">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Unterhaltsreinigung</h3>
+                    <p>
+                      Büro, Praxis, Kita, Handel & privat – planbar nach Intervall. Wir übernehmen die
+                      laufende Reinigung aller nutzungsrelevanten Bereiche und sorgen für dauerhaft
+                      gepflegte Oberflächen, hygienische Sanitärbereiche und frische Räume. Reinigungspläne
+                      werden individuell abgestimmt, damit Abläufe nicht gestört werden und alles zuverlässig
+                      sauber bleibt.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+          
+                <!-- Grundreinigung / Start-Clean -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/grundreinigung.jpg" alt="Gründliche Start- und Grundreinigung von Räumen">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Grundreinigung / Start-Clean</h3>
+                    <p>
+                      Tiefenreinigung vor Start oder turnusmäßig – inklusive Detailarbeiten. Wir entfernen
+                      hartnäckige Verschmutzungen, setzen Böden instand und reinigen schwer zugängliche Zonen,
+                      damit Flächen wieder neuwertig wirken. Ideal nach Umbauten, Einzügen oder als frischer
+                      Reset für Bestandsflächen.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+          
+                <!-- Sanitärhygiene & Entkalkung -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/sanitaer.jpg" alt="Sanitärhygiene und Entkalkung in Bädern">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Sanitärhygiene & Entkalkung</h3>
+                    <p>
+                      Sanitärgrundreinigung, Kalkentfernung & Hygienekonzepte: Wir entkalken Armaturen,
+                      reinigen Fugen und Oberflächen porentief und stellen eine dauerhaft angenehme,
+                      keimarme Umgebung sicher. Auf Wunsch mit dokumentierten Hygieneplänen.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+          
+                <!-- Küchen- & Hygienereinigung -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/kueche.jpg" alt="Reinigung von Teeküchen und Sozialräumen">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Küchen- & Hygienereinigung</h3>
+                    <p>
+                      Teeküchen & Sozialräume inklusive Geräte- und Oberflächenpflege. Wir reinigen
+                      Arbeitsflächen, Griffe, Fronten, Spülen und Kleingeräte sorgfältig – für
+                      hygienische Pausenbereiche, in denen sich alle wohlfühlen.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+              
+                <!-- Treppenhausreinigung -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/treppenhaus.jpg" alt="Treppenhausreinigung in Wohnanlagen und Gewerbe">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Treppenhausreinigung</h3>
+                    <p>
+                      WEG, Wohnanlagen & Gewerbe – sicher & rutschhemmend. Wir reinigen Stufen, Podeste,
+                      Geländer und Eingangsbereiche gründlich und achten auf gepflegte, repräsentative
+                      Auftritte für Bewohner und Besucher.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+          
+                <!-- Desinfektionsreinigung -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/desinfektion.jpg" alt="Desinfektionsreinigung für sensible Bereiche">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Desinfektionsreinigung</h3>
+                    <p>
+                      Für Kitas, Praxen & sensible Bereiche nach Vorgabe. Wir setzen geeignete
+                      Verfahren ein, dokumentieren die Ausführung und reduzieren Keimlasten dort,
+                      wo besondere Hygiene zählt.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+              </div>
+          
+              <!-- ================== GEBÄUDEREINIGUNG – AUSSEN ================== -->
+              <h3 class="group-title">Gebäudereinigung – außen</h3>
+              <div class="grid grid-2">
+          
+                <!-- Glas, Rahmen, Wintergarten, Jalousien & Rollläden -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/fenster.jpg" alt="Glas- und Rahmenreinigung inkl. Jalousien und Rollläden">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Glas-, Rahmen-, Wintergarten, Jalousien & Rollläden</h3>
+                    <p>
+                      Innen & außen – inklusive Rahmen, Falzen und Lichtbändern. Jalousien und
+                      Rollläden reinigen wir lamellenschonend und kümmern uns um die Mechanik.
+                      So bleibt die Durchsicht klar und die Technik langlebig.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+          
+                <!-- Fassadenreinigung -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/fassade.jpg" alt="Schonende Fassadenreinigung">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Fassadenreinigung</h3>
+                    <p>
+                      Glas, Metall, Stein – wir wählen materialschonende Verfahren gegen Schmutz,
+                      Algen und Umweltablagerungen. Ziel: ein sauberes, gepflegtes Erscheinungsbild
+                      ohne die Oberfläche zu beschädigen.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+          
+                <!-- Stein-/Fugen & Graffiti -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/stein_fugen.jpg" alt="Reinigung von Steinflächen und Fugen sowie Graffitientfernung">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Stein-/Fugen & Graffiti</h3>
+                    <p>
+                      Flächenreinigung von Wegen, Plätzen und Mauern inklusive Fugenpflege.
+                      Unschöne Graffiti entfernen wir fachgerecht – je nach Untergrund
+                      mit passender Technik.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+          
+                <!-- Bau- & Bauendreinigung -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/baureinigung.jpg" alt="Bau- und Bauendreinigung auf der Baustelle">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Bau- & Bauendreinigung</h3>
+                    <p>
+                      Zwischen- & Endreinigung für eine bezugsfertige Übergabe. Wir beseitigen
+                      Bauschmutz, Staub und Verpackungsreste und bereiten alle Flächen für die
+                      endgültige Nutzung vor.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+              </div>
+          
+              <!-- ================== HAUSMEISTERSERVICE ================== -->
+              <h3 class="group-title">Hausmeisterservice</h3>
+              <div class="grid grid-2">
+          
+                <!-- Objektkontrollen -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/objektkontrolle.jpg" alt="Regelmäßige Objektkontrollen">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Objektkontrollen</h3>
+                    <p>
+                      Planmäßige Rundgänge, Sichtprüfungen und Dokumentation. Wir erkennen
+                      Mängel frühzeitig, koordinieren Maßnahmen und halten Sie stets auf dem
+                      Laufenden – für einen zuverlässigen Betrieb.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+          
+                <!-- Kleinreparaturen -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/kleinreparaturen.jpg" alt="Kleinreparaturen am Objekt">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Kleinreparaturen</h3>
+                    <p>
+                      Leuchtmittel tauschen, Beschläge nachstellen, Türen/Fenster prüfen – wir
+                      übernehmen kleine Instandsetzungen schnell und fachgerecht, bevor daraus
+                      große Themen werden.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+          
+                <!-- Außenanlagenpflege -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/aussenanlagen.jpg" alt="Pflege der Außenanlagen">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Außenanlagenpflege</h3>
+                    <p>
+                      Rasenmähen, Heckenschnitt, Beetpflege und saisonale Arbeiten – einzeln
+                      beauftragt oder im Abo. Wir erhalten das gepflegte Gesamtbild Ihrer Anlage
+                      das ganze Jahr.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+          
+                <!-- Kehrdienst & Wege -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/kehrdienst.jpg" alt="Kehrdienst für Wege und Zufahrten">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Kehrdienst & Wege</h3>
+                    <p>
+                      Saubere Gehwege, Zufahrten und Allgemeinflächen – mit Laubentfernung
+                      und regelmäßiger Kontrolle. Für ein ordentliches Erscheinungsbild und
+                      sichere Wege.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+          
+                <!-- Müll- & Containerdienst -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/muelldienst.jpg" alt="Müll- und Containerdienst">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Müll- & Containerdienst</h3>
+                    <p>
+                      Bereitstellen, Reinigen und Rücktransport – pünktlich und zuverlässig.
+                      Wir achten auf saubere Müllbereiche und funktionierende Abläufe an
+                      Entsorgungstagen.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+          
+                <!-- Entrümpeln & Transporte -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/entruempeln.jpg" alt="Entrümpelung und Kleintransporte">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Entrümpeln & Transporte</h3>
+                    <p>
+                      Keller, Dachboden, Gewerbeflächen oder Sperrmüll – wir räumen
+                      professionell und übernehmen auf Wunsch den Transport und die
+                      fachgerechte Entsorgung.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+          
+                <!-- Winterdienst-Koordination -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/winterdienst.jpg" alt="Koordination von Winterdiensten">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Winterdienst-Koordination</h3>
+                    <p>
+                      Wir organisieren und überwachen externe Winterdienste, kontrollieren
+                      die Ausführung und dokumentieren Einsätze – für sichere Wege und
+                      Zufahrten bei Schnee und Eis.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+          
+                <!-- Schlüssel & Zutritt -->
+                <article class="card service">
+                  <figure class="card-media">
+                    <img src="assets/leistungen/schluessel.jpg" alt="Schlüssel- und Zutrittsmanagement">
+                  </figure>
+                  <div class="card-body">
+                    <h3>Schlüssel & Zutritt</h3>
+                    <p>
+                      Übergaben, Protokoll und sicheres Handling. Wir managen Schlüssel und
+                      Zutrittsrechte nach Absprache und sorgen für nachvollziehbare Prozesse.
+                    </p>
+                    <div class="card-cta"><a class="btn-primary" href="#kontakt">Jetzt anfragen →</a></div>
+                  </div>
+                </article>
+          
+              </div>
+            </div>
+          </section>
+          
 
-<!-- Abomodelle (Balken-Diagramm, animiert) -->
-<section id="abos">
-    <div class="container">
-      <div class="section-title">
-        <h2>Unsere Abo-Modelle</h2>
-        <p class="subtitle" style="color:var(--muted)">Preis auf Anfrage</p>
-        <div class="cta" style="margin-top:.6rem;">
-          <a class="btn" href="#kontakt">Kontakt aufnehmen</a>
-        </div>
-      </div>
-  
-      <div class="bars">
-        <!-- 25% -->
-        <div class="bar-row card">
-          <div class="bar-top" aria-hidden="true">
-            <h3>SchnupperAbo Home</h3>
-            <span class="pct">25%</span>
-          </div>
-          <p class="desc">Reinigung <em>oder</em> Hausmeisterservice · 1× monatlich</p>
-          <div class="bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="25" aria-label="SchnupperAbo Home">
-            <div class="bar-fill" data-target="25"></div>
-          </div>
-        </div>
-  
-        <!-- 45% -->
-        <div class="bar-row card">
-          <div class="bar-top" aria-hidden="true">
-            <h3>BasisAbo Home</h3>
-            <span class="pct">45%</span>
-          </div>
-          <p class="desc">Reinigung <em>oder</em> Hausmeisterservice · 2× monatlich</p>
-          <div class="bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="45" aria-label="BasisAbo Home">
-            <div class="bar-fill" data-target="45"></div>
-          </div>
-        </div>
-  
-        <!-- 65% -->
-        <div class="bar-row card">
-          <div class="bar-top" aria-hidden="true">
-            <h3>KombiAbo Home</h3>
-            <span class="pct">65%</span>
-          </div>
-          <p class="desc">Reinigung <em>und</em> Hausmeisterservice · 2× monatlich</p>
-          <div class="bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65" aria-label="KombiAbo Home">
-            <div class="bar-fill" data-target="65"></div>
-          </div>
-        </div>
-  
-        <!-- 85% -->
-        <div class="bar-row card">
-          <div class="bar-top" aria-hidden="true">
-            <h3>PremiumAbo Home</h3>
-            <span class="pct">85%</span>
-          </div>
-          <p class="desc">Wöchentlicher Rundum-Service (inkl. Mülltonnendienst)</p>
-          <div class="bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85" aria-label="PremiumAbo Home">
-            <div class="bar-fill" data-target="85"></div>
-          </div>
-        </div>
-  
-        <!-- 100% -->
-        <div class="bar-row card">
-          <div class="bar-top" aria-hidden="true">
-            <h3>PremiumAbo Villa</h3>
-            <span class="pct">100%</span>
-          </div>
-          <p class="desc">Luxus-Service für höchste Ansprüche</p>
-          <div class="bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" aria-label="PremiumAbo Villa">
-            <div class="bar-fill" data-target="100"></div>
-          </div>
-        </div>
-      </div>
+          <section id="kundenmeinungen" class="testimonials" aria-label="Kundenmeinungen">
+            <div class="container">
+              <h2 class="testimonials-title">KUNDENMEINUNGEN</h2>
+          
+              <div class="testimonials-grid">
+                <!-- Karte 1 -->
+                <article class="testimonial-card">
+                  <div class="stars">★★★★★</div>
+                  <p>
+                    Top Service! Unser Bürogebäude wurde nach der Reinigung in perfektem Zustand übergeben. 
+                    Die Terminabsprachen liefen reibungslos und das Team war super freundlich. 
+                    Wir werden die Firma definitiv wieder beauftragen.
+                  </p>
+                  <span class="author">Sabine M.</span>
+                </article>
+          
+                <!-- Karte 2 -->
+                <article class="testimonial-card">
+                  <div class="stars">★★★★★</div>
+                  <p>
+                    Sehr zuverlässig und gründlich! Besonders die Treppenhausreinigung überzeugt uns jedes Mal. 
+                    Es wird auf jedes Detail geachtet und selbst kurzfristige Wünsche werden berücksichtigt. 
+                    Absolute Empfehlung!
+                  </p>
+                  <span class="author">Andreas K.</span>
+                </article>
+          
+                <!-- Karte 3 -->
+                <article class="testimonial-card">
+                  <div class="stars">★★★★★</div>
+                  <p>
+                    Wir haben den Hausmeisterservice gebucht und sind begeistert. 
+                    Ob kleine Reparaturen, Winterdienst oder Außenanlagenpflege – alles läuft zuverlässig und professionell. 
+                    Vielen Dank für die tolle Arbeit!
+                  </p>
+                  <span class="author">Melanie R.</span>
+                </article>
+              </div>
+            </div>
+          </section>
+          
+         <!-- ÜBER UNS / HERO -->
+<section id="ueber-uns" class="about-hero" aria-label="Über uns">
+  <div class="about-hero__bg" aria-hidden="true">
+    <img src="assets/hero/hero-villa.jpg" alt="">
+    <span class="about-hero__shade"></span>
+  </div>
+
+  <div class="about-hero__inner container">
+    <h2 class="about-hero__title">
+      CI DIENSTLEISTUNGEN<br>
+      IHR EXPERTE IN IHRER UMGEBUNG
+    </h2>
+
+    <p class="about-hero__lead">
+      CI Dienstleistungen kombiniert <strong>Gebäudereinigung</strong> und <strong>Hausmeisterservice</strong> zu
+      einem verlässlichen Rundum-Paket – mit festen Ansprechpartnern, klaren Standards und
+      transparenter Dokumentation. Aktiv in <strong>Kelheim, Landshut und Regensburg</strong>,
+      je Standort mit Umland im <strong>+40&nbsp;km Radius</strong>. Unser Anspruch:
+      hygienisch saubere Innenräume, gepflegte Außenanlagen und ein reibungsloser Gebäudebetrieb – aus einer Hand.
+    </p>
+
+    <div class="about-hero__actions">
+      <a class="btn-primary" href="#kontakt">Jetzt anfragen →</a>
     </div>
-  </section>
-  
-  <!-- Styles NUR für #abos -->
-  <style>
-    #abos .bars{ display:grid; gap:1rem; }
-    #abos .bar-row{ padding:1rem 1rem 1.1rem; }
-    #abos .bar-top{ display:flex; justify-content:space-between; align-items:center; gap:.8rem; }
-    #abos h3{ margin:.15rem 0 .25rem; font-weight:800; letter-spacing:.2px; color:var(--ink); }
-    #abos .desc{ margin:.1rem 0 .7rem; color:var(--card-sub); }
-    #abos .pct{ font-weight:800; color:var(--ink); opacity:.6; }
-  
-    #abos .bar-track{
-      width:100%; height:14px; border-radius:999px; overflow:hidden;
-      background:#E8EEF3; border:1px solid #DFE5EA;
-    }
-    #abos .bar-fill{
-      height:100%; width:0%;
-      background: linear-gradient(90deg, var(--brand), #9ef2cd);
-      border-right: 1px solid rgba(0,0,0,.06);
-      transition: width 1.2s cubic-bezier(.2,.8,.2,1);
-      will-change: width;
-    }
-  
-    /* Hover-Effekt auf der Karte */
-    #abos .bar-row:hover{
-      transform: translateY(-3px);
-      box-shadow: 0 18px 38px rgba(2,6,23,.12);
-      border-color: #d5ece2;
-    }
-  </style>
-  
-  <!-- JS zum Animieren (fügt sich zu deinem bestehenden Script hinzu) -->
-  <script>
-  (function(){
-    const section = document.querySelector('#abos');
-    if(!section) return;
-    const fills = section.querySelectorAll('.bar-fill');
-    const animate = () => fills.forEach(el => {
-      const t = +el.dataset.target || 0;
-      el.style.width = t + '%';
-    });
-  
-    if ('IntersectionObserver' in window){
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){ animate(); io.disconnect(); }
-        });
-      }, { threshold: 0.25 });
-      io.observe(section);
-    } else {
-      // Fallback
-      animate();
+  </div>
+</section>
+
+<!-- STANDORT / MAP (eigener Abschnitt, NICHT im Hero!) -->
+<section id="standort" class="location" aria-label="Standort">
+  <div class="map-wrapper">
+    <iframe
+      src="https://www.google.com/maps?q=Benzstra%C3%9Fe%2020,%2093053%20Regensburg&output=embed"
+      width="100%" height="420" style="border:0;" allowfullscreen=""
+      loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="location-inner container">
+    <h2 class="location-title">GANZ IN IHRER NÄHE</h2>
+    <p class="location-address">Benzstraße 20, 93053 Regensburg</p>
+    <p class="location-text">Wir freuen uns über Ihre Kontaktaufnahme und garantieren individuelle Kundenbetreuung.</p>
+    <a href="#kontakt" class="btn-primary">Jetzt anfragen →</a>
+  </div>
+</section>
+
+
+
+
+<!-- (Falls du Platzhalter brauchst, vermeide doppelte IDs) -->
+<!-- <section id="service" style="height:60vh"></section> -->
+<!-- <section id="kundenmeinungen" style="height:60vh"></section> -->
+
+<section id="kontakt" class="contact" aria-label="Kontakt">
+  <div class="container">
+    <h2 class="contact__title">Kontakt</h2>
+    <p class="contact__lead">
+      Bereit für die Verwirklichung Ihrer Ideen? Teilen Sie uns kurz Ihr Vorhaben mit –
+      wir melden uns zeitnah zurück.
+    </p>
+
+    <!-- Erfolgs-/Fehlermeldung -->
+    <div id="contactMessage" class="contact__message" hidden></div>
+
+    <form class="contact__form" action="send.php" method="POST" novalidate>
+      <!-- Honeypot (Spamschutz) -->
+      <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+
+      <div class="field">
+        <input type="text" name="name" placeholder="Vorname, Nachname" required>
+      </div>
+
+      <div class="field">
+        <input type="text" name="address" placeholder="Adresse (optional)">
+      </div>
+
+      <div class="field">
+        <input type="tel" name="phone" placeholder="Telefonnummer (optional)" pattern="^[0-9+()\/\s-]{6,}$">
+      </div>
+
+      <div class="field">
+        <input type="email" name="email" placeholder="E-Mail-Adresse" required>
+      </div>
+
+      <div class="field">
+        <textarea name="message" rows="6" placeholder="Ihr Anliegen hier eingeben" required></textarea>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn-primary">Absenden</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <nav class="links" aria-label="Rechtliches">
+      <a href="Impressum.html">Impressum</a>
+      <a href="Datenschutzerklärung.html">Datenschutz</a>
+    </nav>
+    <div class="copyright">© 2025 CI Dienstleistungen</div>
+  </div>
+</footer>
+
+<script>
+  // Zeige Rückmeldung nach Redirect von send.php (?ok=1 / ?ok=0)
+  (function () {
+    const box = document.getElementById('contactMessage');
+    if (!box) return;
+    const p = new URLSearchParams(location.search);
+    if (p.has('ok')) {
+      const ok = p.get('ok') === '1';
+      box.hidden = false;
+      box.textContent = ok
+        ? 'Danke! Ihre Nachricht wurde erfolgreich versendet.'
+        : 'Leider hat das Senden nicht geklappt. Bitte versuchen Sie es später erneut oder rufen Sie uns an.';
+      box.classList.toggle('is-error', !ok);
+      // nach 8s ausblenden
+      setTimeout(() => box.hidden = true, 8000);
     }
   })();
-  </script>
-  
-
-  <!-- Über uns (2 Checklisten: Gebäudereinigung & Hausmeisterservice) -->
-<section id="ueber-uns">
-    <div class="container">
-      <div class="section-title">
-        <h2>Über uns</h2>
-        <p class="subtitle">1500+ Kund:innen · 10+ Jahre Erfahrung · Kelheim, Landshut & Regensburg – je Standort +40&nbsp;km Radius</p>
-      </div>
-  
-      <div class="card">
-        <p><strong>Ci Dienstleistungen</strong> kombiniert <strong>Gebäudereinigung</strong> und <strong>Hausmeisterservice</strong> zu einem verlässlichen Rundum-Paket – mit festen Ansprechpartnern, klaren Standards und transparenter Dokumentation. Wir sind in <strong>Kelheim, Landshut und Regensburg</strong> aktiv und bedienen je Standort das Umland im <strong>+40&nbsp;km Radius</strong>.</p>
-  
-        <div class="check-cols">
-          <!-- Gebäudereinigung (umfassend) -->
-          <div class="check-card">
-            <h3>Gebäudereinigung</h3>
-            <ul class="checklist">
-              <li>Unterhaltsreinigung (Büro, Praxis, Kita, Handel, privat)</li>
-              <li>Grundreinigung / Start-Clean</li>
-              <li>Glas-, Rahmen- & Wintergartenreinigung</li>
-              <li>Fassadenreinigung (Glas/Metall/Stein)</li>
-              <li>Bau- & Bauendreinigung</li>
-              <li>Sanitärgrundreinigung & Entkalkung</li>
-              <li>Küchen- & Hygienereinigung</li>
-              <li>Teppich- & Polsterreinigung</li>
-              <li>Bodenpflege (Maschinenreinigung, Beschichtung/Versiegelung)</li>
-              <li>Stein-/Fugenreinigung & Graffiti-Entfernung</li>
-              <li>Photovoltaik-/Solarreinigung</li>
-              <li>Jalousien- & Rollladenreinigung</li>
-              <li>Treppenhausreinigung</li>
-              <li>Desinfektionsreinigung (z. B. Kitas, Praxen)</li>
-            </ul>
-          </div>
-  
-          <!-- Hausmeisterservice (inkl. Privathäuser) -->
-          <div class="check-card">
-            <h3>Hausmeisterservice</h3>
-            <ul class="checklist">
-              <li><strong>Privathäuser & Wohnanlagen (WEG)</strong></li>
-              <li>Regelmäßige Objektkontrollen</li>
-              <li>Kleinreparaturen & Leuchtmitteltausch</li>
-              <li>Türen/Fenster prüfen & kleine Justagen</li>
-              <li>Außenanlagenpflege (Rasen, Hecken, Beetpflege)</li>
-              <li>Kehrdienst & Wegepflege</li>
-              <li>Bewässerung & Urlaubsservice</li>
-              <li>Mülltonnen- & Containerdienst</li>
-              <li>Entrümpelungen & Kleintransporte</li>
-              <li>Winterdienst-Koordination (oder nach Absprache)</li>
-              <li>Spielplatz- & Allgemeinflächen-Check</li>
-              <li>Schlüssel- & Zutrittsmanagement (nach Absprache)</li>
-              <li>Handwerker-Koordination & Terminüberwachung</li>
-            </ul>
-          </div>
-        </div>
-  
-        <p class="footnote">Auf Wunsch mit <strong>digitalen Leistungsnachweisen & Fotodokumentation</strong> – transparent und nachvollziehbar.</p>
-      </div>
-    </div>
-  
-    <!-- Scoped Styles nur für #ueber-uns -->
-    <style>
-      #ueber-uns .subtitle{ color: var(--muted); }
-  
-      /* Spalten-Layout für die zwei Checklisten */
-      #ueber-uns .check-cols{
-        display:grid; gap:1rem;
-        grid-template-columns: 1fr 1fr;
-        margin-top:.8rem;
-      }
-      @media (max-width: 900px){
-        #ueber-uns .check-cols{ grid-template-columns: 1fr; }
-      }
-  
-      /* Kartenlook für jede Liste (nutzt deine Variablen) */
-      #ueber-uns .check-card{
-        background: var(--card-bg);
-        border:1px solid var(--card-border);
-        border-radius:16px;
-        padding:1rem 1rem .9rem;
-        box-shadow: 0 6px 14px rgba(2,6,23,.06);
-      }
-      #ueber-uns h3{
-        margin:.1rem 0 .6rem;
-        font-weight:800; color: var(--card-text);
-      }
-  
-      /* Checkliste mit Häkchen */
-      #ueber-uns .checklist{
-        list-style:none; margin:0; padding:0;
-        display:grid; gap:.45rem;
-      }
-      #ueber-uns .checklist li{
-        position:relative; padding-left:1.6rem; color: var(--card-text);
-      }
-      #ueber-uns .checklist li::before{
-        content:"✓";
-        position:absolute; left:0; top:0;
-        color: var(--brand); font-weight:800;
-      }
-  
-      #ueber-uns .footnote{
-        margin-top:.9rem; color: var(--card-sub);
-      }
-    </style>
-  </section>
-  
-
- 
-  
-  <!-- Standorte -->
-  <section id="standorte">
-    <div class="container">
-      <div class="section-title">
-        <h2>Wo du uns findest</h2>
-        <p>Kelheim · Regensburg · Landshut  – je Standort bis zu 40 km Umkreis.</p>
-      </div>
-
-      <div class="grid grid-2">
-        <div class="card place">
-          <div class="place-header" style="display:flex;align-items:center;gap:.6rem;margin-bottom:.2rem;">
-            <span class="icon" aria-hidden="true" style="width:42px;height:42px;font-size:20px;">📍</span>
-            <h3 style="margin:0;">Regensburg – Büro</h3>
-          </div>
-          <p class="addr" style="margin:.2rem 0 .8rem;color:var(--card-sub);font-weight:600;">
-            <a href="https://www.google.com/maps/search/?api=1&query=Benzstr.+20,+93053+Regensburg" target="_blank" rel="noopener" style="border-bottom:1px dashed rgba(2,6,23,.25);">
-              Benzstr. 20, 93053 Regensburg
-            </a>
-          </p>
-          <div class="map">
-            <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Benzstr.+20,+93053+Regensburg&output=embed"></iframe>
-          </div>
-        </div>
-
-        <div class="card place">
-          <div class="place-header" style="display:flex;align-items:center;gap:.6rem;margin-bottom:.2rem;">
-            <span class="icon" aria-hidden="true" style="width:42px;height:42px;font-size:20px;">📍</span>
-            <h3 style="margin:0;">Langquaid – Lager</h3>
-          </div>
-          <p class="addr" style="margin:.2rem 0 .8rem;color:var(--card-sub);font-weight:600;">
-            <a href="https://www.google.com/maps/search/?api=1&query=Gewerbering+8,+84085+Langquaid" target="_blank" rel="noopener" style="border-bottom:1px dashed rgba(2,6,23,.25);">
-              Gewerbering 8, 84085 Langquaid
-            </a>
-          </p>
-          <div class="map">
-            <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Gewerbering+8,+84085+Langquaid&output=embed"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
- 
-<!-- Kontakt (ohne Standorte, mit klaren Quick-Links) -->
-<section id="kontakt">
-    <div class="container">
-      <div class="section-title">
-        <h2>Kontakt</h2>
-        <p class="subtitle" style="color:var(--muted)">Schnell & unkompliziert: anrufen, WhatsApp schreiben oder Formular ausfüllen.</p>
-      </div>
-  
-      <div class="grid grid-2">
-        <!-- Quick-Links / Infos -->
-        <div class="card contact-quick">
-          <h3 style="margin-top:0;">Direktkontakt</h3>
-  
-          <a class="contact-link" href="tel:+4915114098172" aria-label="Hier anrufen">
-            📞 Hier anrufen
-          </a>
-  
-          <a class="contact-link" href="https://wa.me/4915114098172" target="_blank" rel="noopener" aria-label="WhatsApp schreiben">
-            💬 WhatsApp schreiben
-          </a>
-  
-          <a class="contact-link" href="mailto:info@ci-dienstleistungen.com" aria-label="E-Mail senden">
-            ✉️ E-Mail senden
-          </a>
-        </div>
-  
-        <!-- Kontaktformular -->
-        <form class="card contact-form" id="contact-form" aria-label="Kontaktformular" novalidate>
-          <div class="form-grid">
-            <div class="field">
-              <label for="cf-name">Name*</label>
-              <input id="cf-name" name="name" type="text" required placeholder="Vor- und Nachname" autocomplete="name">
-              <small class="err" aria-live="polite"></small>
-            </div>
-  
-            <div class="field">
-              <label for="cf-email">E-Mail*</label>
-              <input id="cf-email" name="email" type="email" required placeholder="name@mail.de" inputmode="email" autocomplete="email">
-              <small class="err" aria-live="polite"></small>
-            </div>
-  
-            <div class="field">
-              <label for="cf-phone">Telefon</label>
-              <input id="cf-phone" name="phone" type="tel" placeholder="+49 …" inputmode="tel" autocomplete="tel">
-              <small class="err" aria-live="polite"></small>
-            </div>
-  
-            <div class="field">
-              <label for="cf-service">Worum geht’s?*</label>
-              <select id="cf-service" name="service" required>
-                <option value="" selected disabled>Bitte wählen</option>
-                <option>Gebäudereinigung</option>
-                <option>Hausmeisterservice</option>
-                <option>Kombi (Reinigung + Hausmeister)</option>
-                <option>Sonstiges</option>
-              </select>
-              <small class="err" aria-live="polite"></small>
-            </div>
-  
-            <div class="field">
-              <label for="cf-loc">Standort*</label>
-              <select id="cf-loc" name="location" required>
-                <option value="" selected disabled>Bitte wählen</option>
-                <option>Kelheim (+40 km)</option>
-                <option>Landshut (+40 km)</option>
-                <option>Regensburg (+40 km)</option>
-              </select>
-              <small class="err" aria-live="polite"></small>
-            </div>
-  
-            <div class="field field-full">
-              <label for="cf-msg">Kurzbeschreibung*</label>
-              <textarea id="cf-msg" name="message" rows="5" required placeholder="Objektgröße, Intervalle, gewünschter Starttermin …"></textarea>
-              <small class="err" aria-live="polite"></small>
-            </div>
-  
-            <div class="consent field-full">
-              <label class="check">
-                <input type="checkbox" id="cf-ok" required>
-                <span>Ich stimme der Verarbeitung meiner Angaben zur Kontaktaufnahme zu. <a href="datenschutzerklärung.html" target="_blank" rel="noopener">Datenschutzerklärung</a></span>
-              </label>
-              <small class="err" aria-live="polite"></small>
-            </div>
-  
-            <div class="actions field-full">
-              <button class="btn" type="submit">Anfrage senden</button>
-            </div>
-          </div>
-  
-          <!-- Feedback -->
-          <div class="toast" id="cf-toast" role="status" aria-live="polite" aria-atomic="true"></div>
-        </form>
-      </div>
-    </div>
-  
-    <!-- Styles nur für #kontakt -->
-    <style>
-      #kontakt .contact-quick .contact-link{
-        display:flex; align-items:center; gap:.6rem;
-        padding:.65rem .85rem; border-radius:12px;
-        background:#fff; border:1px solid var(--card-border);
-        color:var(--ink); font-weight:700; text-decoration:none;
-        box-shadow:0 6px 14px rgba(2,6,23,.06);
-        transition:.2s;
-      }
-      #kontakt .contact-quick .contact-link + .contact-link{ margin-top:.65rem; }
-      #kontakt .contact-quick .contact-link:hover{ background:#fefefe; transform:translateY(-1px); }
-  
-      /* Formular-Layout */
-      #kontakt .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-      #kontakt .field-full{ grid-column:1 / -1; }
-      @media (max-width:900px){ #kontakt .form-grid{ grid-template-columns:1fr; } }
-  
-      #kontakt label{ display:block; font-weight:700; color:var(--card-text); margin-bottom:.35rem; }
-      #kontakt input, #kontakt select, #kontakt textarea{
-        width:100%; border:1px solid var(--card-border); border-radius:12px;
-        padding:.8rem .9rem; background:#fff; color:var(--ink);
-        outline:none; transition:border-color .2s, box-shadow .2s; font:inherit;
-      }
-      #kontakt input:focus, #kontakt select:focus, #kontakt textarea:focus{
-        border-color: var(--brand); box-shadow: 0 0 0 3px rgba(52,211,153,.18);
-      }
-  
-      #kontakt .check{ display:flex; align-items:flex-start; gap:.6rem; }
-      #kontakt .check input{ margin-top:.2rem; }
-      #kontakt .check a{ text-decoration:underline; }
-  
-      #kontakt .actions{ display:flex; align-items:center; gap:.8rem; flex-wrap:wrap; }
-  
-      /* Fehlermeldungen & Toast */
-      #kontakt .err{ color:#b91c1c; min-height:1.1em; display:block; }
-      #kontakt .toast{
-        position:fixed; bottom:16px; right:16px;
-        background:#0d1b2a; color:#fff; padding:.75rem 1rem;
-        border-radius:12px; box-shadow:0 12px 24px rgba(2,6,23,.25);
-        opacity:0; pointer-events:none; transform:translateY(8px);
-        transition:opacity .25s, transform .25s; max-width: min(90vw, 420px);
-      }
-      #kontakt .toast.show{ opacity:1; transform:translateY(0); }
-    </style>
-  
-    <!-- Script: Validierung + mailto-Fallback -->
-    <script>
-      (function(){
-        const form = document.getElementById('contact-form');
-        if(!form) return;
-  
-        const toast = document.getElementById('cf-toast');
-        const showToast = (msg) => {
-          toast.textContent = msg;
-          toast.classList.add('show');
-          setTimeout(()=> toast.classList.remove('show'), 3000);
-        };
-  
-        const fields = ['cf-name','cf-email','cf-service','cf-loc','cf-msg','cf-ok'];
-        const messages = {
-          'cf-name': 'Bitte Namen angeben.',
-          'cf-email': 'Bitte eine gültige E-Mail eintragen.',
-          'cf-service': 'Bitte ein Thema wählen.',
-          'cf-loc': 'Bitte Standort wählen.',
-          'cf-msg': 'Bitte kurz beschreiben, worum es geht.',
-          'cf-ok': 'Bitte Einwilligung bestätigen.'
-        };
-  
-        form.addEventListener('submit', (e)=>{
-          e.preventDefault();
-  
-          // einfache Validierung
-          let valid = true;
-          fields.forEach(id=>{
-            const el = document.getElementById(id);
-            const err = el.closest('.field, .consent')?.querySelector('.err');
-            if(!err) return;
-  
-            let ok = true;
-            if(el.type === 'checkbox'){ ok = el.checked; }
-            else if(el.tagName === 'SELECT'){ ok = !!el.value; }
-            else if(el.type === 'email'){
-              ok = el.value && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value);
-            } else {
-              ok = !!el.value.trim();
-            }
-  
-            if(!ok){ err.textContent = messages[id] || 'Bitte prüfen.'; valid = false; }
-            else { err.textContent = ''; }
-          });
-  
-          if(!valid){ showToast('Bitte Eingaben prüfen.'); return; }
-  
-          // Mailto-Fallback
-          const name = document.getElementById('cf-name').value.trim();
-          const email = document.getElementById('cf-email').value.trim();
-          const phone = document.getElementById('cf-phone').value.trim();
-          const service = document.getElementById('cf-service').value;
-          const loc = document.getElementById('cf-loc').value;
-          const msg = document.getElementById('cf-msg').value.trim();
-  
-          const subject = encodeURIComponent('Anfrage über Website – ' + service);
-          const body = encodeURIComponent(
-  `Name: ${name}
-  E-Mail: ${email}
-  Telefon: ${phone || '-'}
-  Standort: ${loc}
-  
-  Nachricht:
-  ${msg}`
-          );
-  
-          window.location.href = ⁠ mailto:info@ci-dienstleistungen.com?subject=${subject}&body=${body} ⁠;
-          showToast('Danke! Ihr Mailprogramm öffnet sich gleich mit der Anfrage.');
-          form.reset();
-        });
-      })();
-    </script>
-  </section>
-  
-
-  <footer>
-    <div class="container">
-      <!-- Footer-Navigation (eigenständig, zerstört den Header nicht) -->
-      <nav class="footer-nav" aria-label="Footer Navigation">
-        <div class="brand-wrap">
-          <img src="logo_final_ci.png" alt="Logo" style="height:40px; filter: drop-shadow(0 4px 10px rgba(0,0,0,.25));">
-          <span>Ci Dienstleistungen</span>
-        </div>
-        <ul>
-          <li><a href="#leistungen">Leistungen</a></li>
-          <li><a href="#abos">Abos</a></li>
-          <li><a href="#standorte">Standorte</a></li>
-          <li><a href="#ueber-uns">Über uns</a></li>
-          <li><a href="#kontakt">Kontakt</a></li>
-          <!-- Externe Seiten -->
-          <li><a href="impressum.html" rel="noopener">Impressum</a></li>
-          <li><a href="datenschutzerklärung.html" rel="noopener">Datenschutzerklärung</a></li>
-        </ul>
-      </nav>
-  
-      <!-- Copyright -->
-      <p class="footer-copy">© <span id="year"></span> Ci Dienstleistungen</p>
-    </div>
-  
-    <!-- Styles nur für den Footer (scoped, kollidiert nicht mit dem Header) -->
-    <style>
-      footer{
-        border-top:1px solid var(--border);
-        padding: 1rem 0 1.4rem;
-        background: transparent;
-      }
-  
-      /* Wichtig: explizit zurücksetzen, damit globale "nav{position:absolute}" etc. NICHT greifen */
-      footer .footer-nav{
-        position: static !important;   /* neutralisiert dein globales nav{position:absolute} */
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-  
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:1rem;
-        flex-wrap:wrap;
-        padding:.2rem 0 .6rem;
-      }
-  
-      footer .footer-nav .brand-wrap{
-        display:flex; align-items:center; gap:.6rem;
-        font-weight:800; color:#5b6b76;
-      }
-  
-      footer .footer-nav ul{
-        list-style:none; display:flex; gap:.8rem 1rem; margin:0; padding:0; flex-wrap:wrap;
-      }
-  
-      /* Eigene Link-Optik im Footer (überschreibt globales "nav a{color:#fff}") */
-      footer .footer-nav a{
-        color:#5b6b76;
-        font-weight:700;
-        padding:.45rem .7rem;
-        border-radius:10px;
-        transition:.2s;
-        text-decoration:none;
-      }
-      footer .footer-nav a:hover{
-        color: var(--ink);
-        background: rgba(0,0,0,.05);
-      }
-  
-      footer .footer-copy{
-        margin:.2rem 0 0;
-        text-align:center;
-        color:#5b6b76;
-      }
-  
-      @media (max-width: 800px){
-        footer .footer-nav{ flex-direction:column; align-items:flex-start; }
-      }
-    </style>
-  </footer>
-  
-
-  <!-- Scripts -->
+</script>
+                               
+                
   <script>
-    // Footer-Jahr
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Intro-Animation
+    window.addEventListener('load', () => document.body.classList.add('loaded'));
 
-    // Kontakt-Form (dummy)
-    document.getElementById('contact-form')?.addEventListener('submit', e=>{
-      e.preventDefault();
-      alert('Danke! Wir melden uns zeitnah.');
-      e.target.reset();
-    });
-
-    // Stats-Animation
-    function animateStats(){
-      const stats=document.querySelectorAll('.stat-number');
-      stats.forEach(stat=>{
-        const target=+stat.getAttribute('data-target');
-        const update=()=>{
-          const current=+stat.innerText;
-          const increment=Math.max(1, Math.round(target/90));
-          if(current<target){
-            stat.innerText=Math.min(target, current+increment);
-            requestAnimationFrame(update);
-          }else{
-            stat.innerText='+'+target;
-          }
-        };
-        update();
-      });
+    // Burger-Menü
+    const burger = document.querySelector('.burger');
+    const links = document.querySelector('.nav-links');
+    if (burger && links){
+      const toggle = () => {
+        const isOpen = links.classList.toggle('open');
+        burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      };
+      burger.addEventListener('click', toggle);
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        links.classList.remove('open');
+        burger.setAttribute('aria-expanded','false');
+      }));
     }
-    let statsAnimated=false;
-    window.addEventListener('scroll',()=>{
-      const section=document.getElementById('zahlen');
-      if(!section) return;
-      const rect=section.getBoundingClientRect();
-      if(!statsAnimated && rect.top<window.innerHeight){
-        animateStats();
-        statsAnimated=true;
-      }
-    });
   </script>
-
-  
 </body>
-</html>
+</html>            
