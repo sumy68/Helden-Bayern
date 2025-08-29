@@ -3,150 +3,147 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Datenschutzerklärung – Ci Dienstleistungen</title>
-  <meta name="description" content="Datenschutzerklärung von Ci Dienstleistungen – Informationen zur Verarbeitung personenbezogener Daten, Rechtsgrundlagen, Speicherdauer und Betroffenenrechten." />
-  <link rel="icon" href="logo_final_ci.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --page: #EAF9F2;
-      --ink: #545f6b;
-      --muted: #64748b;
-      --brand: #34d399;
-      --border: #dfe9e4;
-      --shadow: 0 10px 25px rgba(2, 6, 23, .08);
-      --radius: 20px;
-      --maxw: 1200px;
-      --card-bg: #F3F6F8;
-      --card-text: #545f6b;
-      --card-sub: #475569;
-      --card-border: #E3EAF0;
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body{
-      margin:0; font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background: var(--page); color: var(--ink); line-height:1.65;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { max-width:100%; height:auto; display:block; }
-    .container{ width:min(100% - 2rem, var(--maxw)); margin-inline:auto; }
-    .topbar{ position: sticky; top:0; z-index:50; background: var(--page); border-bottom:1px solid var(--border);}
-    .topbar nav{ display:flex; justify-content:space-between; align-items:center; padding:.8rem 2rem; }
-    .brand-wrap{ display:flex; align-items:center; gap:.6rem; font-weight:800; color: var(--ink); }
-    .topbar ul{ list-style:none; display:flex; gap:1.1rem; margin:0; padding:0; }
-    .topbar a{ font-weight:700; color:#5b6b76; padding:.55rem .8rem; border-radius:10px; transition:.2s; }
-    .topbar a:hover{ background: rgba(0,0,0,.05); color: var(--ink); }
-    main{ padding: clamp(1.6rem, 4vw, 2.4rem) 0 3rem; }
-    h1{ font-size: clamp(1.8rem, 4vw, 2.4rem); margin:.2rem 0 1rem; font-weight:800; }
-    .card{ background: var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius); padding:1.25rem 1.2rem; box-shadow:var(--shadow);}
-    .card h2{ margin:1rem 0 .4rem; font-size:1.1rem; font-weight:700; }
-    footer{ border-top:1px solid var(--border); padding:1rem 0 1.4rem; }
-    footer .footer-nav{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
-    footer .footer-nav ul{ list-style:none; display:flex; gap:.8rem 1rem; margin:0; padding:0; flex-wrap:wrap; }
-    footer .footer-nav a{ color:#5b6b76; font-weight:700; padding:.45rem .7rem; border-radius:10px; transition:.2s; }
-    footer .footer-nav a:hover{ background: rgba(0,0,0,.05); color: var(--ink); }
-    .footer-copy{ margin:.2rem 0 0; text-align:center; color:#5b6b76; }
-    @media(max-width:800px){ footer .footer-nav{ flex-direction:column; align-items:flex-start; } }
-  </style>
+  <title>Datenschutzerklärung – CI Dienstleistungen</title>
+  <meta name="description" content="Datenschutzerklärung von CI Dienstleistungen – Informationen zur Verarbeitung personenbezogener Daten, Rechtsgrundlagen, Speicherdauer und Betroffenenrechten." />
+  <link rel="icon" href="logo.jpg" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Header wie auf Index -->
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="Startseite">
+        <div class="logo-box">
+          <img src="logo.jpg" alt="CI Logo">
+        </div>
+      </a>
 
-<header class="topbar">
-  <div class="container">
-    <nav aria-label="Hauptnavigation">
-      <div class="brand-wrap">
-        <img src="logo_final_ci.png" alt="Logo" style="height:40px; filter:drop-shadow(0 4px 10px rgba(0,0,0,.25));">
-        <span>Ci Dienstleistungen</span>
+      <nav class="nav-links" aria-label="Hauptmenü">
+        <a href="index.html#leistungen">Service</a>
+        <a href="index.html#kundenmeinungen">Kundenmeinungen</a>
+        <a href="index.html#ueber-uns">Über uns</a>
+        <a href="index.html#standort">Standort</a>
+        <a href="index.html#kontakt">Kontakt</a>
+        <a href="Impressum.html">Impressum</a>
+        <a href="Datenschutzerklärung.html" aria-current="page">Datenschutz</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn" href="#instagram">Instagram</a>
+        <a class="btn" href="tel:+4915114098172">Anrufen</a>
       </div>
-      <ul>
-        <li><a href="index.html#leistungen">Leistungen</a></li>
-        <li><a href="index.html#abos">Abos</a></li>
-        <li><a href="index.html#standorte">Standorte</a></li>
-        <li><a href="index.html#ueber-uns">Über uns</a></li>
-        <li><a href="index.html#kontakt">Kontakt</a></li>
-        <li><a href="Datenschutzerklärung.html" aria-current="page">Datenschutzerklärung</a></li>
-        <li><a href="Impressum.html">Impressum</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
 
-<main>
-  <div class="container">
-    <h1>Datenschutzerklärung</h1>
-    <div class="card">
-
-      <h2>1. Verantwortlicher</h2>
-      <p>
-        <strong>Ci Dienstleistungen</strong><br>
-        Inhaber: <strong>Cetin Ilcin</strong><br>
-        Benzstr. 20, 93053 Regensburg<br>
-        Telefon: <a href="tel:+4915114098172">+49&nbsp;151&nbsp;14098172</a><br>
-        E-Mail: <a href="mailto:info@ci-dienstleistungen.com">info@ci-dienstleistungen.com</a>
-      </p>
-
-      <h2>2. Allgemeine Hinweise</h2>
-      <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Personenbezogene Daten behandeln wir vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften (DSGVO, BDSG).</p>
-
-      <h2>3. Erhebung und Speicherung personenbezogener Daten sowie Art und Zweck von deren Verwendung</h2>
-
-      <h3>a) Besuch der Website</h3>
-      <p>Beim Aufrufen unserer Website werden durch den Browser automatisch Informationen an den Server gesendet (sog. Server-Logfiles). Dazu gehören: IP-Adresse, Datum und Uhrzeit, Name der abgerufenen Datei, übertragene Datenmenge, Meldung über erfolgreichen Abruf, Browsertyp und Betriebssystem.</p>
-
-      <h3>b) Nutzung des Kontaktformulars</h3>
-      <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Formular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
-      <p><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) und Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an effizienter Bearbeitung von Anfragen).</p>
-
-      <h3>c) Kontaktaufnahme per E-Mail oder Telefon</h3>
-      <p>Wenn Sie uns per E-Mail oder Telefon kontaktieren, speichern wir Ihre Angaben zur Bearbeitung der Anfrage. Ohne Ihre Einwilligung geben wir diese Daten nicht weiter.</p>
-
-      <h2>4. Speicherdauer</h2>
-      <p>Wir speichern personenbezogene Daten nur so lange, wie dies zur Erreichung der jeweiligen Zwecke erforderlich ist oder wie es gesetzlich vorgeschrieben ist.</p>
-
-      <h2>5. Weitergabe von Daten</h2>
-      <p>Eine Übermittlung Ihrer persönlichen Daten an Dritte findet nur statt, wenn dies für die Vertragsabwicklung erforderlich ist oder Sie ausdrücklich eingewilligt haben.</p>
-
-      <h2>6. Ihre Rechte</h2>
-      <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Widerspruch gegen die Verarbeitung sowie auf Datenübertragbarkeit. Zudem haben Sie das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.</p>
-
-      <h2>7. Sicherheit</h2>
-      <p>Wir verwenden geeignete technische und organisatorische Sicherheitsmaßnahmen, um Ihre Daten gegen Manipulation, Verlust oder unbefugten Zugriff zu schützen.</p>
-
-      <h2>8. Aktualität und Änderung</h2>
-      <p>Diese Datenschutzerklärung ist aktuell gültig (Stand: <span id="date"></span>). Durch die Weiterentwicklung unserer Website oder geänderte gesetzliche Vorgaben kann eine Anpassung notwendig werden.</p>
-
+      <button class="burger" aria-label="Menü öffnen" aria-expanded="false"><span></span></button>
     </div>
-  </div>
-</main>
+  </header>
 
-<footer>
-  <div class="container">
-    <nav class="footer-nav" aria-label="Footer Navigation">
-      <div class="brand-wrap">
-        <img src="logo_final_ci.png" alt="Logo" style="height:40px; filter: drop-shadow(0 4px 10px rgba(0,0,0,.25));">
-        <span>Ci Dienstleistungen</span>
+  <!-- Inhalt -->
+  <main>
+    <section class="contact" aria-label="Datenschutzerklärung">
+      <div class="container">
+        <h1 class="contact__title">Datenschutzerklärung</h1>
+        <p class="contact__lead">
+          Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.
+        </p>
+
+        <div class="card service" style="max-width:900px; margin:0 auto;">
+          <div class="card-body">
+            <h3>1. Verantwortlicher</h3>
+            <p>
+              <strong>CI Dienstleistungen</strong><br>
+              Inhaber: <strong>Cetin Ilcin</strong><br>
+              Benzstr. 20, 93053 Regensburg<br>
+              Telefon: <a href="tel:+4915114098172">+49&nbsp;151&nbsp;14098172</a><br>
+              E-Mail: <a href="mailto:info@ci-dienstleistungen.com">info@ci-dienstleistungen.com</a>
+            </p>
+
+            <h3>2. Allgemeine Hinweise</h3>
+            <p>
+              Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Personenbezogene Daten
+              behandeln wir vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften
+              (DSGVO, BDSG).
+            </p>
+
+            <h3>3. Erhebung und Nutzung personenbezogener Daten</h3>
+            <h4>a) Besuch der Website</h4>
+            <p>
+              Beim Aufrufen unserer Website werden durch den Browser automatisch Informationen
+              an den Server gesendet (sog. Server-Logfiles).
+            </p>
+
+            <h4>b) Kontaktformular</h4>
+            <p>
+              Angaben aus dem Formular inklusive Kontaktdaten werden zur Bearbeitung gespeichert.
+              <br><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung)
+              und Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).
+            </p>
+
+            <h4>c) E-Mail oder Telefon</h4>
+            <p>
+              Daten aus der direkten Kontaktaufnahme speichern wir zur Bearbeitung. Eine Weitergabe
+              erfolgt nicht ohne Ihre Einwilligung.
+            </p>
+
+            <h3>4. Speicherdauer</h3>
+            <p>
+              Personenbezogene Daten speichern wir nur so lange, wie dies erforderlich oder gesetzlich vorgeschrieben ist.
+            </p>
+
+            <h3>5. Weitergabe von Daten</h3>
+            <p>
+              Eine Übermittlung Ihrer Daten an Dritte findet nur statt, wenn dies für die Vertragsabwicklung notwendig ist
+              oder Sie ausdrücklich eingewilligt haben.
+            </p>
+
+            <h3>6. Ihre Rechte</h3>
+            <p>
+              Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung,
+              Widerspruch sowie auf Datenübertragbarkeit. Zudem können Sie sich bei einer Aufsichtsbehörde beschweren.
+            </p>
+
+            <h3>7. Sicherheit</h3>
+            <p>
+              Wir setzen technische und organisatorische Maßnahmen ein, um Ihre Daten vor Verlust oder unbefugtem Zugriff zu schützen.
+            </p>
+
+            <h3>8. Aktualität</h3>
+            <p>
+              Diese Datenschutzerklärung ist gültig (Stand: <span id="date"></span>). Änderungen bleiben vorbehalten.
+            </p>
+          </div>
+        </div>
       </div>
-      <ul>
-        <li><a href="index.html#leistungen">Leistungen</a></li>
-        <li><a href="index.html#abos">Abos</a></li>
-        <li><a href="index.html#standorte">Standorte</a></li>
-        <li><a href="index.html#ueber-uns">Über uns</a></li>
-        <li><a href="index.html#kontakt">Kontakt</a></li>
-        <li><a href="Impressum.html">Impressum</a></li>
-        <li><a href="Datenschutzerklärung.html" aria-current="page">Datenschutzerklärung</a></li>
-      </ul>
-    </nav>
-    <p class="footer-copy">© <span id="year"></span> Ci Dienstleistungen</p>
-  </div>
-</footer>
+    </section>
+  </main>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  document.getElementById('date').textContent = new Date().toLocaleDateString('de-DE');
-</script>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <nav class="links" aria-label="Rechtliches">
+        <a href="Impressum.html">Impressum</a>
+        <a href="Datenschutzerklärung.html" aria-current="page">Datenschutz</a>
+      </nav>
+      <div class="copyright">© 2025 CI Dienstleistungen</div>
+    </div>
+  </footer>
 
+  <script>
+    // Datum & Jahr einsetzen
+    document.getElementById('date').textContent = new Date().toLocaleDateString('de-DE');
+    // Burger-Menü
+    const burger = document.querySelector('.burger');
+    const links = document.querySelector('.nav-links');
+    if (burger && links){
+      const toggle = () => {
+        const isOpen = links.classList.toggle('open');
+        burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      };
+      burger.addEventListener('click', toggle);
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        links.classList.remove('open');
+        burger.setAttribute('aria-expanded','false');
+      }));
+    }
+  </script>
 </body>
 </html>

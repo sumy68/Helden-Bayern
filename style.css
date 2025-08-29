@@ -154,7 +154,7 @@
 
   /* ===== INTRO TEXT NACH VIDEO ===== */
   .intro {
-    margin-top: 800px; /* +4cm Abstand */
+    margin-top: 400px; /* +4cm Abstand */
     padding: 40px 16px;
     display: flex;
     justify-content: center;
@@ -182,7 +182,7 @@
   
  /* ===== Leistungen ===== */
 .services{
-    padding: clamp(56px, 8vw, 96px) 16px;
+    padding: clamp(200px, 8vw, 250px) 16px;
   }
   .services .container{
     max-width: 1200px;
