@@ -198,8 +198,6 @@
   margin-top: 180px; /* ≈ 7cm Abstand nach oben */
   padding: clamp(56px, 8vw, 96px) 16px; /* ursprüngliches Padding für Innenabstand */
 }
-
-  }
   .services .container{
     max-width: 1200px;
     margin: 0 auto;
