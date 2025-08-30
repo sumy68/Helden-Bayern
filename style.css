@@ -148,16 +148,6 @@ main{ flex:1 0 auto; }
   
 }
 
-/* --- FIX: auf Mobile nicht croppen --- */
-@media (max-width: 700px){
-  .hero__video{
-    object-fit: contain;
-    object-position: center;
-    background: var(--green); /* statt #000 → passt zum Seitenhintergrund */
-  }
-}
-
-
 
 .hero__shade{
   position: absolute; inset: 0;
