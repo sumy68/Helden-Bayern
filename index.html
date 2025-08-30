@@ -47,20 +47,18 @@
     </div>
   </header>
 
-  <video class="hero__video"
-       autoplay
-       muted
-       loop
-       playsinline
-       preload="metadata"
-       poster="hero-poster.jpg">
-  <!-- Hochformat (Handy) -->
-  <source src="hero-portrait.mp4" type="video/mp4" media="(orientation: portrait)">
-  <!-- Querformat (Laptop/Tablet) -->
-  <source src="hero.mp4"         type="video/mp4" media="(orientation: landscape)">
-  Dein Browser unterstützt kein HTML5-Video.
-</video>
-
+  <section class="hero" id="top" aria-label="Hero">
+    <video class="hero__video"
+           autoplay
+           muted
+           loop
+           playsinline
+           preload="metadata"
+           poster="hero-poster.jpg">
+      <source src="hero-portrait.mp4" type="video/mp4" media="(orientation: portrait)">
+      <source src="hero.mp4" type="video/mp4" media="(orientation: landscape)">
+      Dein Browser unterstützt kein HTML5-Video.
+    </video>
   
     <div class="hero__inner">
       <h1 class="hero__title">
@@ -68,12 +66,12 @@
         HAUSMEISTERSERVICE<br>
         UND GEBÄUDEREINIGUNG
       </h1>
-  
       <div class="hero__actions">
         <a class="btn-primary" href="#kontakt">Jetzt anfragen →</a>
       </div>
     </div>
   </section>
+  
   
 
   

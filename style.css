@@ -158,7 +158,8 @@ main{ flex:1 0 auto; }
   object-position: center;   /* Fokus */
   transform: translateZ(0);  /* iOS Rendering-Fix */
   -webkit-user-select: none; /* vermeidet Gesten-Störungen */
-  
+  z-index: 0;              /* liegt unter Text & Navi */
+  pointer-events: none;    /* fängt keine Klicks über der Navi ab */
 }
 
 
