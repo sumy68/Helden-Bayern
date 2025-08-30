@@ -94,10 +94,8 @@
     object-fit: cover; /* responsiv füllend */
     object-position: center;
   }
-  .hero__shade{
-    position:absolute; inset:0;
-    background: rgba(0,0,0,0.45);
-  }
+  .hero__shade{ display: none; }
+
   .hero__inner{
     position: relative; z-index: 1;
     width: min(1100px, 92%);
@@ -681,3 +679,66 @@ footer {
 
 /* Button unten */
 .abo-action{ text-align:center; margin-top: clamp(32px,5vw,56px); }
+
+.services-overview {
+  margin-top: 140px; /* Abstand zum oberen Content */
+  padding: clamp(40px,6vw,80px) 16px;
+  background: var(--green-footer);
+  color: var(--text);
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 3vw, 36px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.overview-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: clamp(24px, 4vw, 32px);
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,.25);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.overview-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.3);
+}
+
+.overview-card img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin: 0 auto 10px;
+}
+
+.overview-card h3 {
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.overview-card p {
+  font-size: clamp(14px, 1.8vw, 16px);
+  line-height: 1.5;
+  opacity: .92;
+  flex: 1;
+}
+
+.overview-card .btn-primary {
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+/* Responsiv */
+@media (max-width: 900px) {
+  .overview-grid { grid-template-columns: 1fr; }
+}

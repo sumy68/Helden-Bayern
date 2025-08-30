@@ -85,6 +85,31 @@
   </section>
 
 
+<!-- ===== KURZÜBERSICHT LEISTUNGSBEREICHE ===== -->
+<section class="services-overview">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="overview-card">
+        <img src="assets/icons/reinigung_innen.svg" alt="Gebäudereinigung innen Icon">
+        <h3>Gebäudereinigung – innen</h3>
+        <p>Von Unterhalts- bis Grundreinigung, Sanitärhygiene, Küchen und Treppenhäusern.</p>
+        <a href="#leistungen" class="btn-primary">Mehr erfahren →</a>
+      </div>
+      <div class="overview-card">
+        <img src="assets/icons/reinigung_aussen.svg" alt="Gebäudereinigung außen Icon">
+        <h3>Gebäudereinigung – außen</h3>
+        <p>Glas- und Fassadenpflege, Stein- & Fugenreinigung, Graffiti-Entfernung und Bauendreinigung.</p>
+        <a href="#leistungen" class="btn-primary">Mehr erfahren →</a>
+      </div>
+      <div class="overview-card">
+        <img src="assets/icons/hausmeister.svg" alt="Hausmeisterservice Icon">
+        <h3>Hausmeisterservice</h3>
+        <p>Objektkontrollen, Kleinreparaturen, Außenanlagenpflege, Müll- & Containerdienst, Winterdienste.</p>
+        <a href="#leistungen" class="btn-primary">Mehr erfahren →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 
       
@@ -402,54 +427,89 @@
             </div>
           </section>
           
-          <section id="abos" class="abos abos--donuts" aria-label="Abo-Modelle">
-            <div class="container">
-              <header class="abos__header">
-                <h2>Unsere Abo-Modelle</h2>
-                <p class="abos__sub">Preis auf Anfrage – Leistungsumfang als Prozent</p>
-              </header>
+         
           
-              <div class="donut-grid">
-                <!-- Jede .donut hat data-perc für die Animation -->
-                <figure class="donut" data-perc="30" aria-label="SchnupperAbo Home, 30 Prozent">
-                  <svg viewBox="0 0 120 120" role="img" aria-hidden="true">
-                    <circle class="track" cx="60" cy="60" r="52" />
-                    <circle class="bar"   cx="60" cy="60" r="52" />
-                  </svg>
-                  <figcaption>
-                    <h3>SchnupperAbo Home</h3>
-                    <p>Gartenpflege <em>oder</em> Hausmeisterservice, 1×/Monat</p>
-                    <span class="percent">30%</span>
-                    <small>Preis auf Anfrage</small>
-                  </figcaption>
-                </figure>
-          
-                <figure class="donut" data-perc="50" aria-label="BasisAbo Home, 50 Prozent">
-                  <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="52"/><circle class="bar" cx="60" cy="60" r="52"/></svg>
-                  <figcaption><h3>BasisAbo Home</h3><p>2×/Monat</p><span class="percent">50%</span><small>Preis auf Anfrage</small></figcaption>
-                </figure>
-          
-                <figure class="donut" data-perc="70" aria-label="KombiAbo Home, 70 Prozent">
-                  <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="52"/><circle class="bar" cx="60" cy="60" r="52"/></svg>
-                  <figcaption><h3>KombiAbo Home</h3><p>Garten + Hausmeister, 2×/Monat</p><span class="percent">70%</span><small>Preis auf Anfrage</small></figcaption>
-                </figure>
-          
-                <figure class="donut" data-perc="90" aria-label="PremiumAbo Home, 90 Prozent">
-                  <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="52"/><circle class="bar" cx="60" cy="60" r="52"/></svg>
-                  <figcaption><h3>PremiumAbo Home</h3><p>Wöchentlicher Rundum-Service</p><span class="percent">90%</span><small>Preis auf Anfrage</small></figcaption>
-                </figure>
-          
-                <figure class="donut" data-perc="100" aria-label="PremiumAbo Villa, 100 Prozent">
-                  <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="52"/><circle class="bar" cx="60" cy="60" r="52"/></svg>
-                  <figcaption><h3>PremiumAbo Villa</h3><p>Maximaler Leistungsumfang</p><span class="percent">100%</span><small>Preis auf Anfrage</small></figcaption>
-                </figure>
-              </div>
-          
-              <div class="abo-action">
-                <a class="btn-primary" href="#kontakt">Jetzt anfragen →</a>
-              </div>
-            </div>
-          </section>
+              <section id="abos" class="abos abos--donuts" aria-label="Abo-Modelle">
+                <div class="container">
+                  <header class="abos__header">
+                    <h2>Unsere Abo-Modelle</h2>
+                    <p class="abos__sub">Preis auf Anfrage – Leistungsumfang als Prozent dargestellt</p>
+                  </header>
+              
+                  <div class="donut-grid">
+                    <!-- Jede .donut hat data-perc für die Animation -->
+                    <figure class="donut" data-perc="30" aria-label="SchnupperAbo Home, 30 Prozent">
+                      <svg viewBox="0 0 120 120" role="img" aria-hidden="true">
+                        <circle class="track" cx="60" cy="60" r="52" />
+                        <circle class="bar"   cx="60" cy="60" r="52" />
+                      </svg>
+                      <figcaption>
+                        <h3>SchnupperAbo Home</h3>
+                        <p>Basisleistungen im Bereich <strong>Gartenpflege</strong> <em>oder</em> <strong>Hausmeisterservice</strong>, einmal pro Monat.</p>
+                        <span class="percent">30%</span>
+                        <small>Preis auf Anfrage</small>
+                      </figcaption>
+                    </figure>
+              
+                    <figure class="donut" data-perc="50" aria-label="BasisAbo Home, 50 Prozent">
+                      <svg viewBox="0 0 120 120">
+                        <circle class="track" cx="60" cy="60" r="52"/>
+                        <circle class="bar" cx="60" cy="60" r="52"/>
+                      </svg>
+                      <figcaption>
+                        <h3>BasisAbo Home</h3>
+                        <p>Regelmäßige <strong>Gartenpflege</strong> oder <strong>Hausmeisterservice</strong> zweimal im Monat.</p>
+                        <span class="percent">50%</span>
+                        <small>Preis auf Anfrage</small>
+                      </figcaption>
+                    </figure>
+              
+                    <figure class="donut" data-perc="70" aria-label="KombiAbo Home, 70 Prozent">
+                      <svg viewBox="0 0 120 120">
+                        <circle class="track" cx="60" cy="60" r="52"/>
+                        <circle class="bar" cx="60" cy="60" r="52"/>
+                      </svg>
+                      <figcaption>
+                        <h3>KombiAbo Home</h3>
+                        <p>Kombination aus <strong>Gartenpflege</strong> und <strong>Hausmeisterservice</strong>, zweimal monatlich.</p>
+                        <span class="percent">70%</span>
+                        <small>Preis auf Anfrage</small>
+                      </figcaption>
+                    </figure>
+              
+                    <figure class="donut" data-perc="90" aria-label="PremiumAbo Home, 90 Prozent">
+                      <svg viewBox="0 0 120 120">
+                        <circle class="track" cx="60" cy="60" r="52"/>
+                        <circle class="bar" cx="60" cy="60" r="52"/>
+                      </svg>
+                      <figcaption>
+                        <h3>PremiumAbo Home</h3>
+                        <p>Umfassende Betreuung mit <strong>Gartenpflege</strong>, <strong>Hausmeisterservice</strong> und regelmäßiger <strong>Gebäudereinigung</strong>, einmal pro Woche.</p>
+                        <span class="percent">90%</span>
+                        <small>Preis auf Anfrage</small>
+                      </figcaption>
+                    </figure>
+              
+                    <figure class="donut" data-perc="100" aria-label="PremiumAbo Villa, 100 Prozent">
+                      <svg viewBox="0 0 120 120">
+                        <circle class="track" cx="60" cy="60" r="52"/>
+                        <circle class="bar" cx="60" cy="60" r="52"/>
+                      </svg>
+                      <figcaption>
+                        <h3>PremiumAbo Villa</h3>
+                        <p>Maximaler Leistungsumfang: <strong>Gartenpflege</strong>, <strong>Hausmeisterservice</strong> und <strong>Gebäudereinigung</strong> in flexiblen Intervallen – perfekt für höchste Ansprüche.</p>
+                        <span class="percent">100%</span>
+                        <small>Preis auf Anfrage</small>
+                      </figcaption>
+                    </figure>
+                  </div>
+              
+                  <div class="abo-action">
+                    <a class="btn-primary" href="#kontakt">Jetzt anfragen →</a>
+                  </div>
+                </div>
+              </section>
+              
           
           
 
