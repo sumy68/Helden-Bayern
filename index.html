@@ -47,11 +47,14 @@
     </div>
   </header>
 
-  <!-- HERO mit Hintergrund-Video -->
-<section id="top" class="hero" aria-label="Intro">
+  <section id="top" class="hero" aria-label="Intro">
     <div class="hero__bg" aria-hidden="true">
-      <video class="hero__video" autoplay muted loop playsinline>
+      <video class="hero__video" autoplay muted loop playsinline poster="hero-poster.jpg">
+        <!-- Mobile-Version (Portrait), wird nur bei max. 700px geladen -->
+        <source src="hero-portrait.mp4" type="video/mp4" media="(max-width: 700px)">
+        <!-- Standard-Version (Landscape) -->
         <source src="hero.mp4" type="video/mp4">
+        Dein Browser unterstützt kein HTML5-Video.
       </video>
       <div class="hero__shade"></div>
     </div>
@@ -68,6 +71,8 @@
       </div>
     </div>
   </section>
+  
+
   
   <!-- INTRO-TEXT (mit Abstand nach dem Video) -->
   <section class="intro" aria-label="Einführung">
