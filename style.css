@@ -153,9 +153,10 @@ main{ flex:1 0 auto; }
   .hero__video{
     object-fit: contain;
     object-position: center;
-    background: #000; /* schwarze Letterbox-Ränder */
+    background: var(--green); /* statt #000 → passt zum Seitenhintergrund */
   }
 }
+
 
 
 .hero__shade{
