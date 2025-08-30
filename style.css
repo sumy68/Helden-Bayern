@@ -130,11 +130,24 @@ main{ flex:1 0 auto; }
 /* Vollfläche + iOS-Workarounds */
 .hero{
   position: relative;
-  min-height: 100svh;        /* stabil auf Mobile */
   display: grid;
   place-items: center;
+
+  /* Hero beginnt UNTER dem Header */
+  margin-top: var(--nav-h);
+
+  /* sichtbare Fläche = Viewport minus Header */
+  min-height: calc(100svh - var(--nav-h));
   overflow: hidden;
 }
+@supports (height: 100dvh){
+  .hero{ min-height: calc(100dvh - var(--nav-h)); }
+}
+
+
+
+
+
 .hero__bg{ position: absolute; inset: 0; height: 100%; }
 
 .hero__video{
@@ -156,9 +169,11 @@ main{ flex:1 0 auto; }
 }
 
 @media (max-width: 600px){
-  .hero{ min-height: 90svh; }
-  .hero__video{ object-position: center; } /* nicht nach oben verschieben */
+  .hero{ min-height: calc(100svh - var(--nav-h)); }
+  .hero__video{ object-position: center; }
 }
+
+
 
 @media (max-width: 380px){
   .hero__video{ display: none; }
@@ -353,6 +368,12 @@ main{ flex:1 0 auto; }
   padding-bottom: clamp(40px, 8vh, 72px);
   text-align: center;
 }
+
+.hero__inner{
+  place-self: center; /* wirklich mittig im Grid */
+}
+
+
 .about-hero__title{
   font-weight: 900;
   text-transform: uppercase;
@@ -751,3 +772,11 @@ footer::before {
 @media (max-width:900px){
   #standort .location-grid{ grid-template-columns:1fr; gap:24px; }
 }
+.site-header{
+  position: sticky; top: 0;
+  z-index: 1000;                      /* vorher: 10 */
+  background: rgba(15,36,22,0.95);    /* gern auch 1.0, dann sieht man das Video nicht mehr durch */
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+section[id]{ scroll-margin-top: calc(var(--nav-h) + 12px); }
