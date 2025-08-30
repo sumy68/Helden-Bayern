@@ -82,19 +82,34 @@
   /* ===== HERO ===== */
   .hero{
     position: relative;
-    min-height: 90vh;
+    min-height: 100svh;       /* volle Handy-Höhe stabil */
     display: grid;
     place-items: center;
     overflow: hidden;
   }
+  
   .hero__bg{ position:absolute; inset:0; }
+  
   .hero__video{
     position:absolute; inset:0;
     width:100%; height:100%;
-    object-fit: cover; /* responsiv füllend */
+    object-fit: cover;
     object-position: center;
+    transform: translateZ(0); /* iOS fix */
   }
-  .hero__shade{ display: none; }
+  
+  .hero__shade{ 
+    position:absolute; inset:0; 
+    background: linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.35) 60%, rgba(0,0,0,.45));
+    display:block;
+  }
+  
+  /* Mobile Fokus leicht verschieben */
+  @media (max-width: 600px){
+    .hero{ min-height: 90svh; }
+    .hero__video{ object-position: center 25%; }
+  }
+  
 
   .hero__inner{
     position: relative; z-index: 1;
