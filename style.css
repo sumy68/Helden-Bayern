@@ -1,7 +1,7 @@
 :root{
   --green: #0f2416;
   --green-footer: #0c1c12;
-  --text: #eaf6ea;
+  --text: #ffffff;
   --red: #e5093d;
 
   --accent: #ff2b53;
@@ -48,14 +48,46 @@ main{ flex:1 0 auto; }
   object-fit: contain;
 }
 
-/* Links */
-.nav-links{
-  display:flex; align-items:center; justify-content:center;
-  gap: clamp(18px, 3vw, 28px);
-  font-weight:700;
+/* Globale Navi-Links (Desktop) */
+.nav-links a{
+  color:#fff;
+  text-decoration:none;
+  opacity:1;
+  font-weight:800;
+  font-size:20px;
+  line-height:1.2;
 }
-.nav-links a{ color:var(--text); text-decoration:none; opacity:.95; }
-.nav-links a:hover{ opacity:1; }
+
+/* Mobile-Off-Canvas (unter 1024px) */
+@media (max-width:1024px){
+  .nav-links{
+    position: fixed; inset: 0 0 0 auto; width: min(78vw, 320px);
+    background: var(--green-footer);
+    display: flex;                 /* sicherstellen, dass Flex aktiv ist */
+    flex-direction: column;        /* untereinander */
+    align-items: stretch;          /* volle Breite */
+    justify-content: flex-start;
+    padding: 96px 20px 24px;
+    gap: 6px;                      /* Abstand zwischen Einträgen */
+    transform: translateX(100%);
+    box-shadow: -6px 0 18px rgba(0,0,0,.35);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1);
+    z-index: 999;                  /* über dem Inhalt */
+  }
+
+  .nav-links a{
+    display: block;                /* ganze Zeile klickbar */
+    width: 100%;
+    padding: 12px 10px;
+    font-size: 17px;               /* etwas kompakter im Drawer */
+    border-radius: 10px;
+  }
+
+  .nav-links a:hover{
+    background: rgba(255,255,255,.06);
+  }
+}
+
 
 /* CTAs */
 .nav-cta{ display:flex; justify-content:flex-end; align-items:center; gap:12px; }
@@ -206,7 +238,7 @@ main{ flex:1 0 auto; }
   font-size: clamp(28px, 5vw, 42px);
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: .5px;
+  letter-spacing: .2px;
 }
 .group-title{
   margin: clamp(36px, 5vw, 56px) 0 clamp(16px, 3vw, 24px);
@@ -640,4 +672,80 @@ footer::before {
 /* Responsiv */
 @media (max-width: 900px) {
   .overview-grid { grid-template-columns: 1fr; }
+}
+/* --- NAV: Burger nur mobil, Desktop klassische Leiste --- */
+.burger { display: none; }
+
+@media (max-width:1024px){
+  .burger{ display:block; }
+  .nav-cta{ display:none; }
+  .nav-links{
+    position: fixed; inset: 0 0 0 auto; width: min(78vw, 320px);
+    background: var(--green-footer);
+    display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start;
+    padding: 96px 20px 24px; gap: 6px;
+    transform: translateX(100%);
+    box-shadow: -6px 0 18px rgba(0,0,0,.35);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1);
+    z-index: 999;
+  }
+  .nav-links.open{ transform: translateX(0); }
+  .nav-links a{
+    display:block; width:100%; padding:12px 10px;
+    color:#fff; text-decoration:none; opacity:1;
+    font-weight:800; font-size:17px; line-height:1.2; border-radius:10px;
+  }
+  .nav-links a:hover{ background: rgba(255,255,255,.06); }
+}
+
+@media (min-width:1025px){
+  .nav-links{
+    position: static;
+    display: flex; flex-direction: row; align-items: center; justify-content: center;
+    gap: clamp(20px, 3vw, 32px); padding: 0; width: auto;
+    transform: none; box-shadow: none; background: transparent;
+  }
+  .nav-links a{
+    display:inline-block; padding:0;
+    color:#fff; opacity:1; text-decoration:none;
+    font-weight:800; font-size:20px; line-height:1.2;
+  }
+}
+
+/* --- STANDORTE: 3 Boxen nebeneinander --- */
+/* Stelle sicher, dass dein HTML-Wrapper so ist:
+   <section id="standort" class="location"> ... </section> */
+#standort.location .location-inner{
+  max-width:1200px; margin:0 auto; padding:60px 16px; text-align:center;
+}
+/* globales p-spacing im Standort-Bereich neutralisieren */
+#standort.location .location-inner p{ margin-bottom:0; }
+
+#standort .location-grid{
+  display:grid; grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:32px; margin:32px 0 40px;
+}
+
+#standort .location-box{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:14px;
+  padding:24px;
+  text-align:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.25);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+#standort .location-box:hover{ transform:translateY(-3px); box-shadow:0 8px 22px rgba(0,0,0,.35); }
+
+#standort .location-address{
+  font-weight:700; font-size:clamp(16px,2.2vw,18px);
+  margin:0 0 10px 0;
+}
+#standort .location-text{
+  opacity:.9; font-size:clamp(15px,2vw,17px);
+  margin:0;
+}
+
+@media (max-width:900px){
+  #standort .location-grid{ grid-template-columns:1fr; gap:24px; }
 }
