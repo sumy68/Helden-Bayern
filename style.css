@@ -146,6 +146,14 @@ main{ flex:1 0 auto; }
   transform: translateZ(0);  /* iOS Rendering-Fix */
   -webkit-user-select: none; /* vermeidet Gesten-Störungen */
 }
+/* --- FIX: auf Mobile/Portrait nicht croppen --- */
+@media (max-width: 700px), (orientation: portrait){
+  .hero__video{
+    object-fit: contain;
+    object-position: center;
+    background: #000; /* schwarze „Letterbox“-Ränder */
+  }
+}
 
 .hero__shade{
   position: absolute; inset: 0;
@@ -153,19 +161,18 @@ main{ flex:1 0 auto; }
   pointer-events: none;
 }
 
-/* Kleine Screens: Fokus etwas nach oben */
 @media (max-width: 600px){
   .hero{ min-height: 90svh; }
-  .hero__video{ object-position: center 25%; }
+  .hero__video{ object-position: center; } /* nicht nach oben verschieben */
 }
 
-/* Sehr kleine Geräte: nur Poster */
 @media (max-width: 380px){
   .hero__video{ display: none; }
   .hero__bg{
-    background: url('hero-poster.jpg') center 25% / cover no-repeat;
+    background: #000 url('hero-poster.jpg') center / contain no-repeat;
   }
 }
+
 
 .hero__inner{
   position: relative; z-index: 1;
