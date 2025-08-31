@@ -789,19 +789,21 @@ section[id]{ scroll-margin-top: calc(var(--nav-h) + 12px); }
   margin-top: 1.5rem; /* etwas Luft nach oben */
 }
 
-.location-actions .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem; /* Abstand zwischen Icon und Text */
-  padding: 0.75rem 1.25rem;
-  border-radius: 8px;
-  background: #ff2b53;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background 0.3s ease;
+.location-actions {
+  display: flex;
+  justify-content: center;   /* Buttons zentrieren */
+  align-items: center;       /* vertikal mittig */
+  width: 100%;               /* volle Breite erzwingen */
+  gap: 1rem;                 /* Abstand zwischen Buttons */
+  margin-top: 1.5rem;
 }
+
 
 .location-actions .btn:hover {
   background: #ff1744;
+}
+
+.location-actions {
+  margin-left: auto;
+  margin-right: auto;
 }
