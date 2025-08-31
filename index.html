@@ -27,14 +27,15 @@
       </nav>
 
       <div class="nav-cta">
-        <a class="btn" href="#instagram" aria-label="Instagram">
-          <!-- Instagram Icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a5.5 5.5 0 1 1 0 11a5.5 5.5 0 0 1 0-11Zm0 2a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7ZM18.5 6a1 1 0 1 1 0 2a1 1 0 0 1 0-2Z"/>
+        <a class="btn" href="https://wa.me/4915568581734" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <!-- WhatsApp Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="currentColor" aria-hidden="true">
+            <path d="M16 .396C7.2.396.005 7.59.005 16.396c0 2.887.758 5.704 2.204 8.188L.11 31.927l7.558-2.047a15.82 15.82 0 0 0 8.332 2.316h.006c8.8 0 15.994-7.193 15.994-16 0-4.266-1.66-8.272-4.672-11.283C24.272 2.056 20.266.396 16 .396Zm0 29.084c-2.652 0-5.238-.713-7.488-2.063l-.537-.318-4.488 1.214 1.195-4.367-.35-.551a13.32 13.32 0 0 1-2.037-7.104c0-7.34 5.973-13.313 13.313-13.313 3.555 0 6.89 1.387 9.404 3.9 2.514 2.52 3.896 5.854 3.896 9.409 0 7.34-5.973 13.313-13.313 13.313Zm7.285-9.947c-.398-.2-2.355-1.16-2.72-1.293-.365-.136-.632-.2-.9.2-.265.398-1.032 1.293-1.265 1.558-.232.265-.465.298-.863.099-.398-.2-1.68-.62-3.197-1.976-1.18-1.05-1.977-2.352-2.21-2.75-.232-.398-.025-.613.175-.813.18-.18.398-.465.598-.698.2-.232.265-.398.398-.664.132-.265.066-.498-.033-.698-.1-.2-.9-2.166-1.233-2.966-.324-.78-.654-.673-.9-.685-.232-.012-.498-.015-.765-.015-.265 0-.698.1-1.065.498-.365.398-1.398 1.367-1.398 3.332s1.432 3.863 1.632 4.132c.2.265 2.816 4.297 6.82 6.028.954.412 1.7.66 2.28.844.957.305 1.828.262 2.516.159.768-.114 2.355-.961 2.688-1.889.332-.928.332-1.722.232-1.889-.1-.166-.365-.265-.764-.465Z"/>
           </svg>
-          Instagram
+          WhatsApp
         </a>
-        <a class="btn" href="tel:#" aria-label="Anrufen">
+        
+        <a class="btn" href="tel:+4915568581734" aria-label="Anrufen">
           <!-- Telefon Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
             <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.56.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 7a1 1 0 0 1 1-1h3.49a1 1 0 0 1 1 1c0 1.22.2 2.42.57 3.56a1 1 0 0 1-.24 1.02l-2.2 2.21z"/>
@@ -48,29 +49,29 @@
   </header>
 
   <section class="hero" id="top" aria-label="Hero">
+    <!-- Hintergrundvideo -->
     <video class="hero__video"
            autoplay
            muted
            playsinline
-           preload="metadata"
+           loop
+           preload="auto"
            poster="hero-poster.jpg">
+      <source src="hero-portrait.webm" type="video/webm" media="(orientation: portrait)">
       <source src="hero-portrait.mp4" type="video/mp4" media="(orientation: portrait)">
+      <source src="hero.webm" type="video/webm" media="(orientation: landscape)">
       <source src="hero.mp4" type="video/mp4" media="(orientation: landscape)">
       Dein Browser unterstützt kein HTML5-Video.
     </video>
   
+    <!-- Text über dem Video -->
     <div class="hero__inner">
-      <h1 class="hero__title">
-        IHR PARTNER IM<br>
-        HAUSMEISTERSERVICE<br>
-        UND GEBÄUDEREINIGUNG
-      </h1>
+      <h1 class="hero__title">Hausmeisterservice & Gebäudereinigung</h1>
       <div class="hero__actions">
-        <a class="btn-primary" href="#kontakt">Jetzt anfragen →</a>
+        <a href="#kontakt" class="btn-primary">Jetzt anfragen →</a>
       </div>
     </div>
   </section>
-  
   
 
   
@@ -612,6 +613,26 @@
     <a href="#kontakt" class="btn-primary">Jetzt anfragen →</a>
   </div>
 </section>
+
+<div class="location-actions">
+  <!-- Anrufen Button -->
+  <a class="btn" href="tel:+4915568581734" aria-label="Anrufen">
+    <!-- Telefon Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+      <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.56.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 7a1 1 0 0 1 1-1h3.49a1 1 0 0 1 1 1c0 1.22.2 2.42.57 3.56a1 1 0 0 1-.24 1.02l-2.2 2.21z"/>
+    </svg>
+    Anrufen
+  </a>
+
+  <!-- WhatsApp Button -->
+  <a class="btn" href="https://wa.me/4915568581734" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <!-- WhatsApp Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="currentColor" aria-hidden="true">
+      <path d="M16 .396C7.2.396.005 7.59.005 16.396c0 2.887.758 5.704 2.204 8.188L.11 31.927l7.558-2.047a15.82 15.82 0 0 0 8.332 2.316h.006c8.8 0 15.994-7.193 15.994-16 0-4.266-1.66-8.272-4.672-11.283C24.272 2.056 20.266.396 16 .396Zm0 29.084c-2.652 0-5.238-.713-7.488-2.063l-.537-.318-4.488 1.214 1.195-4.367-.35-.551a13.32 13.32 0 0 1-2.037-7.104c0-7.34 5.973-13.313 13.313-13.313 3.555 0 6.89 1.387 9.404 3.9 2.514 2.52 3.896 5.854 3.896 9.409 0 7.34-5.973 13.313-13.313 13.313Zm7.285-9.947c-.398-.2-2.355-1.16-2.72-1.293-.365-.136-.632-.2-.9.2-.265.398-1.032 1.293-1.265 1.558-.232.265-.465.298-.863.099-.398-.2-1.68-.62-3.197-1.976-1.18-1.05-1.977-2.352-2.21-2.75-.232-.398-.025-.613.175-.813.18-.18.398-.465.598-.698.2-.232.265-.398.398-.664.132-.265.066-.498-.033-.698-.1-.2-.9-2.166-1.233-2.966-.324-.78-.654-.673-.9-.685-.232-.012-.498-.015-.765-.015-.265 0-.698.1-1.065.498-.365.398-1.398 1.367-1.398 3.332s1.432 3.863 1.632 4.132c.2.265 2.816 4.297 6.82 6.028.954.412 1.7.66 2.28.844.957.305 1.828.262 2.516.159.768-.114 2.355-.961 2.688-1.889.332-.928.332-1.722.232-1.889-.1-.166-.365-.265-.764-.465Z"/>
+    </svg>
+    WhatsApp
+  </a>
+</div>
 
 
 
