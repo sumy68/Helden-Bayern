@@ -807,3 +807,10 @@ section[id]{ scroll-margin-top: calc(var(--nav-h) + 12px); }
   margin-left: auto;
   margin-right: auto;
 }
+
+
+v/* 3× Abstand + 1cm extra vor dem Abo-Block */
+#abos{ margin-top: calc(var(--gap-base) * 3 + 1cm); }
+
+/* 5× Abstand + 1cm extra zwischen Standorte (#standort) und Kontakt (#kontakt) */
+#kontakt{ margin-top: calc(var(--gap-base) * 5 + 1cm); }
