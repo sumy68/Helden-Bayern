@@ -803,5 +803,5 @@ section[id]{ scroll-margin-top: calc(var(--nav-h) + 12px); }
 }
 
 .location-actions .btn:hover {
-  background: #ff2b53;
+  background: #ff1744;
 }
