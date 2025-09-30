@@ -1,9 +1,12 @@
 <?php
 /**
  * Kontaktformular → IONOS SMTP mit Fallback:
- * - Erst From = Nutzer-E-Mail (dein Wunsch).
- * - Wenn der SMTP-Server das blockt, Fallback auf From = eigene Domain (Reply-To = Nutzer).
- * Voraussetzung: composer require phpmailer/phpmailer (vendor/ vorhanden)
+ * - From = Nutzer-E-Mail (falls möglich)
+ * - Fallback = eigene Domain-Adresse
+ * - SMTP-Passwort sicher aus .env geladen
+ *
+ * Voraussetzung:
+ *   composer require phpmailer/phpmailer vlucas/phpdotenv
  */
 
 declare(strict_types=1);
@@ -11,12 +14,19 @@ ini_set('display_errors', '0');
 error_reporting(E_ALL);
 
 require __DIR__ . '/vendor/autoload.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use Dotenv\Dotenv;
 
+// --- ENV laden ---
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->safeLoad();
+$SMTP_PASS = $_ENV['SMTP_PASS'] ?? '';
+
+// --- Konstanten ---
 const MAIL_HOST       = 'smtp.ionos.de';
 const MAIL_USER       = 'info@ci-dienstleistungen.com';   // dein IONOS-Postfach
-const MAIL_PASS       = 'Gaziantep2727!';        // <<< EINTRAGEN
 const MAIL_FROM_SAFE  = 'info@ci-dienstleistungen.com';   // sicherer Absender (Fallback)
 const MAIL_TO         = 'info@ci-dienstleistungen.com';   // Empfängerpostfach
 const MAIL_TO_NAME    = 'CI Dienstleistungen';
@@ -30,6 +40,7 @@ function redirect(bool $ok): void {
   exit;
 }
 
+// Nur POST akzeptieren
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
   redirect(false);
 }
@@ -60,27 +71,24 @@ $body = "Neue Kontaktanfrage\n"
       . "E-Mail: {$email}\n\n"
       . "Nachricht:\n{$message}\n";
 
-function configureIonos(PHPMailer $m): void {
+function configureIonos(PHPMailer $m, string $SMTP_PASS): void {
   $m->isSMTP();
   $m->Host       = MAIL_HOST;
   $m->SMTPAuth   = true;
   $m->Username   = MAIL_USER;
-  $m->Password   = MAIL_PASS;
-  $m->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Alternativ: ENCRYPTION_SMTPS + Port 465
+  $m->Password   = $SMTP_PASS;
+  $m->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // oder ENCRYPTION_SMTPS + Port 465
   $m->Port       = 587;
 
   $m->CharSet    = 'UTF-8';
-  // Envelope-From / Return-Path muss deiner Domain gehören
   $m->Sender     = MAIL_FROM_SAFE;
-
-  // Timeouts konservativ
   $m->Timeout    = 15;
 }
 
 try {
-  // 1) Versuch: From = Nutzer (Anzeige beim Empfänger)
+  // 1) Versuch: From = Nutzer
   $mail = new PHPMailer(true);
-  configureIonos($mail);
+  configureIonos($mail, $SMTP_PASS);
 
   $fromName = $name !== '' ? $name : $email;
 
@@ -96,10 +104,10 @@ try {
   redirect(true);
 
 } catch (Exception $e1) {
-  // 2) Fallback: sicheres From = eigene Domain, Reply-To = Nutzer
+  // 2) Fallback: From = eigene Domain
   try {
     $mail2 = new PHPMailer(true);
-    configureIonos($mail2);
+    configureIonos($mail2, $SMTP_PASS);
 
     $fromName = ($name !== '' ? $name . ' ' : '') . 'via CI Kontaktformular';
     $mail2->setFrom(MAIL_FROM_SAFE, $fromName);
@@ -114,7 +122,7 @@ try {
     redirect(true);
 
   } catch (Exception $e2) {
-    // Optionales kurzes Logging für die Fehlersuche:
+    // Optional: Log aktivieren für Debug
     // @file_put_contents(__DIR__.'/mail_error.log', date('c').
     //   "\nERSTVERSUCH: ".$e1->getMessage()."\nFALLBACK: ".$e2->getMessage()."\n", FILE_APPEND);
     redirect(false);
