@@ -652,38 +652,38 @@
       wir melden uns zeitnah zurück.
     </p>
 
-    <!-- Erfolgs-/Fehlermeldung -->
-    <div id="contactMessage" class="contact__message" hidden></div>
-
-    <form class="contact__form" action="send.php" method="POST" novalidate>
+    <form class="contact__form" id="contactForm" action="https://formspree.io/f/xqayqdyy" method="POST" novalidate>
       <!-- Honeypot (Spamschutz) -->
       <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
-
+    
+      <!-- Optional: Betreff für die eingehende Mail -->
+      <input type="hidden" name="_subject" value="Neue Anfrage über ci-dienstleistungen.com">
+    
       <div class="field">
         <input type="text" name="name" placeholder="Vorname, Nachname" required>
       </div>
-
+    
       <div class="field">
         <input type="text" name="address" placeholder="Adresse (optional)">
       </div>
-
+    
       <div class="field">
         <input type="tel" name="phone" placeholder="Telefonnummer (optional)" pattern="^[0-9+()\/\s-]{6,}$">
       </div>
-
+    
       <div class="field">
         <input type="email" name="email" placeholder="E-Mail-Adresse" required>
       </div>
-
+    
       <div class="field">
         <textarea name="message" rows="6" placeholder="Ihr Anliegen hier eingeben" required></textarea>
       </div>
-
+    
       <div class="actions">
         <button type="submit" class="btn-primary">Absenden</button>
       </div>
     </form>
-  </div>
+    
 </section>
 
 <footer>
@@ -696,24 +696,6 @@
   </div>
 </footer>
 
-<script>
-  // Zeige Rückmeldung nach Redirect von send.php (?ok=1 / ?ok=0)
-  (function () {
-    const box = document.getElementById('contactMessage');
-    if (!box) return;
-    const p = new URLSearchParams(location.search);
-    if (p.has('ok')) {
-      const ok = p.get('ok') === '1';
-      box.hidden = false;
-      box.textContent = ok
-        ? 'Danke! Ihre Nachricht wurde erfolgreich versendet.'
-        : 'Leider hat das Senden nicht geklappt. Bitte versuchen Sie es später erneut oder rufen Sie uns an.';
-      box.classList.toggle('is-error', !ok);
-      // nach 8s ausblenden
-      setTimeout(() => box.hidden = true, 8000);
-    }
-  })();
-</script>
                                
                 
   <script>
