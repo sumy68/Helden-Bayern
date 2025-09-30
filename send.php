@@ -1,29 +1,122 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $empfaenger = "info@ci-dienstleistungen.com"; // Zieladresse
-    $betreff = "Neue Kontaktanfrage von der Website";
+/**
+ * Kontaktformular → IONOS SMTP mit Fallback:
+ * - Erst From = Nutzer-E-Mail (dein Wunsch).
+ * - Wenn der SMTP-Server das blockt, Fallback auf From = eigene Domain (Reply-To = Nutzer).
+ * Voraussetzung: composer require phpmailer/phpmailer (vendor/ vorhanden)
+ */
 
-    $name = htmlspecialchars($_POST["name"]);
-    $adresse = htmlspecialchars($_POST["address"]);
-    $telefon = htmlspecialchars($_POST["phone"]);
-    $email = htmlspecialchars($_POST["email"]);
-    $nachricht = htmlspecialchars($_POST["message"]);
+declare(strict_types=1);
+ini_set('display_errors', '0');
+error_reporting(E_ALL);
 
-    $inhalt = "Name: $name\n";
-    $inhalt .= "Adresse: $adresse\n";
-    $inhalt .= "Telefon: $telefon\n";
-    $inhalt .= "E-Mail: $email\n\n";
-    $inhalt .= "Nachricht:\n$nachricht\n";
+require __DIR__ . '/vendor/autoload.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-    $header = "From: $email\r\n";
-    $header .= "Reply-To: $email\r\n";
+const MAIL_HOST       = 'smtp.ionos.de';
+const MAIL_USER       = 'info@ci-dienstleistungen.com';   // dein IONOS-Postfach
+const MAIL_PASS       = 'Gaziantep2727!';        // <<< EINTRAGEN
+const MAIL_FROM_SAFE  = 'info@ci-dienstleistungen.com';   // sicherer Absender (Fallback)
+const MAIL_TO         = 'info@ci-dienstleistungen.com';   // Empfängerpostfach
+const MAIL_TO_NAME    = 'CI Dienstleistungen';
 
-    if (mail($empfaenger, $betreff, $inhalt, $header)) {
-        header("Location: index.html?ok=1#kontakt");
-        exit;
-    } else {
-        header("Location: index.html?ok=0#kontakt");
-        exit;
-    }
+function redirect(bool $ok): void {
+  $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+  $host   = $_SERVER['HTTP_HOST'] ?? 'localhost:8000';
+  $uri    = rtrim(dirname($_SERVER['REQUEST_URI'] ?? '/'), '/\\');
+  $to     = $scheme . '://' . $host . ($uri ?: '/') . '/?ok=' . ($ok ? '1' : '0') . '#kontakt';
+  header('Location: ' . $to);
+  exit;
 }
-?>
+
+if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+  redirect(false);
+}
+
+// Honeypot
+if (!empty($_POST['website'] ?? '')) {
+  redirect(true);
+}
+
+// Felder
+$name    = trim((string)($_POST['name']    ?? ''));
+$address = trim((string)($_POST['address'] ?? ''));
+$phone   = trim((string)($_POST['phone']   ?? ''));
+$email   = trim((string)($_POST['email']   ?? ''));
+$message = trim((string)($_POST['message'] ?? ''));
+
+// Validierung
+if ($name === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  redirect(false);
+}
+
+// Mailtext
+$body = "Neue Kontaktanfrage\n"
+      . "====================\n\n"
+      . "Name: {$name}\n"
+      . "Adresse: {$address}\n"
+      . "Telefon: {$phone}\n"
+      . "E-Mail: {$email}\n\n"
+      . "Nachricht:\n{$message}\n";
+
+function configureIonos(PHPMailer $m): void {
+  $m->isSMTP();
+  $m->Host       = MAIL_HOST;
+  $m->SMTPAuth   = true;
+  $m->Username   = MAIL_USER;
+  $m->Password   = MAIL_PASS;
+  $m->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Alternativ: ENCRYPTION_SMTPS + Port 465
+  $m->Port       = 587;
+
+  $m->CharSet    = 'UTF-8';
+  // Envelope-From / Return-Path muss deiner Domain gehören
+  $m->Sender     = MAIL_FROM_SAFE;
+
+  // Timeouts konservativ
+  $m->Timeout    = 15;
+}
+
+try {
+  // 1) Versuch: From = Nutzer (Anzeige beim Empfänger)
+  $mail = new PHPMailer(true);
+  configureIonos($mail);
+
+  $fromName = $name !== '' ? $name : $email;
+
+  $mail->setFrom($email, $fromName);
+  $mail->addAddress(MAIL_TO, MAIL_TO_NAME);
+  $mail->addReplyTo($email, $fromName);
+  $mail->Subject = 'Neue Kontaktanfrage von der Website';
+  $mail->isHTML(false);
+  $mail->Body = $body;
+  $mail->addCustomHeader('X-Original-From', $email);
+
+  $mail->send();
+  redirect(true);
+
+} catch (Exception $e1) {
+  // 2) Fallback: sicheres From = eigene Domain, Reply-To = Nutzer
+  try {
+    $mail2 = new PHPMailer(true);
+    configureIonos($mail2);
+
+    $fromName = ($name !== '' ? $name . ' ' : '') . 'via CI Kontaktformular';
+    $mail2->setFrom(MAIL_FROM_SAFE, $fromName);
+    $mail2->addAddress(MAIL_TO, MAIL_TO_NAME);
+    $mail2->addReplyTo($email, $name !== '' ? $name : $email);
+    $mail2->Subject = 'Neue Kontaktanfrage (Absender umgeschrieben)';
+    $mail2->isHTML(false);
+    $mail2->Body = $body;
+    $mail2->addCustomHeader('X-Original-From', $email);
+
+    $mail2->send();
+    redirect(true);
+
+  } catch (Exception $e2) {
+    // Optionales kurzes Logging für die Fehlersuche:
+    // @file_put_contents(__DIR__.'/mail_error.log', date('c').
+    //   "\nERSTVERSUCH: ".$e1->getMessage()."\nFALLBACK: ".$e2->getMessage()."\n", FILE_APPEND);
+    redirect(false);
+  }
+}

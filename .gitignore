@@ -1,0 +1,4 @@
+/vendor/
+/mail_error.log
+/.env
+.DS_Store
